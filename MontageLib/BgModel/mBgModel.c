@@ -7,6 +7,8 @@
 #include <mBgModel.h>
 #include <montage.h>
 
+#include <dlio_profiler/dlio_profiler.h>
+
 #define MAXSTR  256
 
 extern char *optarg;
@@ -19,6 +21,8 @@ int debugCheck(char *debugStr);
 
 int main(int argc, char **argv)
 {
+   /////////////////////////////////////////////
+   DLIO_PROFILER_C_INIT(NULL, NULL, NULL);
    int     c, debug, mode, useall, niteration;
 
    char    imgfile[MAXSTR];
@@ -67,12 +71,18 @@ int main(int argc, char **argv)
             {
                printf("[struct stat=\"ERROR\", msg=\"Argument for -i (%s) cannot be interpreted as an integer\"]\n", 
                   optarg);
+
+               /////////////////////////////////////////////////////////////////////////
+               DLIO_PROFILER_C_FINI();
                exit(1);
             }
 
             if(niteration < 1)
             {
                printf ("[struct stat=\"ERROR\", msg=\"Number of iterations too small (%d). This parameter is normally around 5000.\"]\n", niteration);
+
+               /////////////////////////////////////////////////////////////////////////
+               DLIO_PROFILER_C_FINI();
                exit(1);
             }
 
@@ -83,6 +93,9 @@ int main(int argc, char **argv)
             {
                printf ("[struct stat=\"ERROR\", msg=\"Cannot open status file: %s\"]\n",
                   optarg);
+
+               /////////////////////////////////////////////////////////////////////////
+               DLIO_PROFILER_C_FINI();
                exit(1);
             }
             break;
@@ -106,12 +119,16 @@ int main(int argc, char **argv)
             if(debug < 0)
             {
                 fprintf(montage_status, "[struct stat=\"ERROR\", msg=\"Invalid debug level.\"]\n");
+                /////////////////////////////////////////////////////////////////////////
+               DLIO_PROFILER_C_FINI();
                 exit(1);
             }
             break;
 
          default:
             printf ("[struct stat=\"ERROR\", msg=\"Usage: %s [-i niter] [-t(oggle halfway from level to slope)][-f(lip back and forth between level and slope)] [-l(evel-only)] [-d level] [-g gapdir] [-a(ll-overlaps)] [-s statusfile] images.tbl fits.tbl corrections.tbl\"]\n", argv[0]);
+            /////////////////////////////////////////////////////////////////////////
+            DLIO_PROFILER_C_FINI();
             exit(1);
             break;
       }
@@ -120,6 +137,8 @@ int main(int argc, char **argv)
    if (argc - optind < 3) 
    {
       printf ("[struct stat=\"ERROR\", msg=\"Usage: %s [-i niter] [-t(oggle halfway from level to slope)][-f(lip back and forth between level and slope)] [-l(evel-only)] [-d level] [-g gapdir] [-a(ll-overlaps)] [-s statusfile] images.tbl fits.tbl corrections.tbl\"]\n", argv[0]);
+      /////////////////////////////////////////////////////////////////////////
+      DLIO_PROFILER_C_FINI();
       exit(1);
    }
 
@@ -132,11 +151,15 @@ int main(int argc, char **argv)
    if(returnStruct->status == 1)
    {
        fprintf(montage_status, "[struct stat=\"ERROR\", msg=\"%s\"]\n", returnStruct->msg);
+       /////////////////////////////////////////////////////////////////////////
+       DLIO_PROFILER_C_FINI();
        exit(1);
    }
    else
    {
        fprintf(montage_status, "[struct stat=\"OK\", module=\"mBgModel\", %s]\n", returnStruct->msg);
+       /////////////////////////////////////////////////////////////////////////
+       DLIO_PROFILER_C_FINI();
        exit(0);
    }
 }

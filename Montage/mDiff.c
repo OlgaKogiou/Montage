@@ -44,6 +44,7 @@ Version  Developer        Date     Change
 #include "wcs.h"
 #include "mNaN.h"
 
+
 #define MAXSTR  256
 #define MAXFILE 256
 
@@ -102,7 +103,7 @@ FILE *fstatus;
 /*************************************************************************/
 
 int main(int argc, char **argv)
-{
+{  
    int       i, j, c, ifile, status;
    long      fpixel[4], nelements;
    int       nullcnt;
@@ -439,6 +440,7 @@ int main(int argc, char **argv)
    /* Allocate memory for the output image pixels */ 
    /***********************************************/ 
 
+
    data = (double **)malloc(jlength * sizeof(double *));
 
    for(j=0; j<jlength; ++j)
@@ -455,7 +457,8 @@ int main(int argc, char **argv)
    /****************************/
    /* Initialize data to zeros */
    /****************************/
-
+//   DLIO_PROFILER_C_REGION_START(data_init);
+//   // DLIO_PROFILER_C_REGION_UPDATE_INT("data_init", "jlength", jlength);
    for (j=0; j<jlength; ++j)
    {
       for (i=0; i<ilength; ++i)
@@ -463,6 +466,7 @@ int main(int argc, char **argv)
          data[j][i] = 0.;
       }
    }
+   // DLIO_PROFILER_C_REGION_END(data_init);
 
 
    /**********************************************/ 

@@ -2,6 +2,9 @@ UNAME_S := $(shell uname -s)
 
 SO_FLAG := 
 
+DLIO_LDFLAGS = -L/usr/workspace/iopp/kogiou1/venvs/pegasus-env/lib/python3.9/site-packages/dlio_profiler/lib64 -ldlio_profiler
+SO_FLAG += $(DLIO_LDFLAGS)
+
 ifeq ($(UNAME_S),Darwin)
    SO_FLAG := -undefined dynamic_lookup
 endif

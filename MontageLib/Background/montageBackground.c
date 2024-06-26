@@ -42,6 +42,8 @@ Version  Developer        Date     Change
 #include <mBackground.h>
 #include <montage.h>
 
+#include <dlio_profiler/dlio_profiler.h>
+
 #define MAXSTR  256
 
 static int  noAreas;
@@ -90,6 +92,10 @@ static char montage_msgstr[1024];
 
 struct mBackgroundReturn *mBackground(char *input_file, char *ofile, double A, double B, double C, int noAreasin, int debug)
 {
+   ///////////////////////////////////////////////////////////////////////////////
+   DLIO_PROFILER_C_FUNCTION_START();
+   DLIO_PROFILER_C_FUNCTION_UPDATE_STR("input_file", input_file);
+
    int       i, j, status;
    long      fpixel[4], nelements;
    double   *buffer, *abuffer;
@@ -201,6 +207,10 @@ struct mBackgroundReturn *mBackground(char *input_file, char *ofile, double A, d
    if(mBackground_readFits(infile, inarea) > 0)
    {
       strcpy(returnStruct->msg, montage_msgstr);
+
+      ///////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
+
       return returnStruct;
    }
 
@@ -375,6 +385,10 @@ struct mBackgroundReturn *mBackground(char *input_file, char *ofile, double A, d
          abuffer = (double *)NULL;
 
          strcpy(returnStruct->msg, montage_msgstr);
+
+         ////////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
+
          return returnStruct;
       }
       
@@ -412,6 +426,10 @@ struct mBackgroundReturn *mBackground(char *input_file, char *ofile, double A, d
             abuffer = (double *)NULL;
 
             strcpy(returnStruct->msg, montage_msgstr);
+
+            //////////////////////////////////////////////////////////////////////
+            DLIO_PROFILER_C_FUNCTION_END();
+
             return returnStruct;
          }
       }
@@ -494,6 +512,8 @@ struct mBackgroundReturn *mBackground(char *input_file, char *ofile, double A, d
       abuffer = (double *)NULL;
 
       strcpy(returnStruct->msg, montage_msgstr);
+      //////////////////////////////////////////////////////////////////////
+            DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -527,6 +547,8 @@ struct mBackgroundReturn *mBackground(char *input_file, char *ofile, double A, d
          abuffer = (double *)NULL;
 
          strcpy(returnStruct->msg, montage_msgstr);
+         //////////////////////////////////////////////////////////////////////
+            DLIO_PROFILER_C_FUNCTION_END();
          return returnStruct;
       }
    }
@@ -569,6 +591,8 @@ struct mBackgroundReturn *mBackground(char *input_file, char *ofile, double A, d
       abuffer = (double *)NULL;
 
       strcpy(returnStruct->msg, montage_msgstr);
+      //////////////////////////////////////////////////////////////////////
+            DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -600,6 +624,8 @@ struct mBackgroundReturn *mBackground(char *input_file, char *ofile, double A, d
          abuffer = (double *)NULL;
 
          strcpy(returnStruct->msg, montage_msgstr);
+         //////////////////////////////////////////////////////////////////////
+            DLIO_PROFILER_C_FUNCTION_END();
          return returnStruct;
       }
    }
@@ -636,6 +662,8 @@ struct mBackgroundReturn *mBackground(char *input_file, char *ofile, double A, d
       abuffer = (double *)NULL;
 
       strcpy(returnStruct->msg, montage_msgstr);
+      //////////////////////////////////////////////////////////////////////
+            DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -666,6 +694,8 @@ struct mBackgroundReturn *mBackground(char *input_file, char *ofile, double A, d
          abuffer = (double *)NULL;
 
          strcpy(returnStruct->msg, montage_msgstr);
+         //////////////////////////////////////////////////////////////////////
+            DLIO_PROFILER_C_FUNCTION_END();
          return returnStruct;
       }
 
@@ -701,6 +731,8 @@ struct mBackgroundReturn *mBackground(char *input_file, char *ofile, double A, d
       abuffer = (double *)NULL;
 
       strcpy(returnStruct->msg, montage_msgstr);
+      //////////////////////////////////////////////////////////////////////
+            DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -733,6 +765,8 @@ struct mBackgroundReturn *mBackground(char *input_file, char *ofile, double A, d
          abuffer = (double *)NULL;
 
          strcpy(returnStruct->msg, montage_msgstr);
+         //////////////////////////////////////////////////////////////////////
+            DLIO_PROFILER_C_FUNCTION_END();
          return returnStruct;
       }
    }
@@ -775,6 +809,8 @@ struct mBackgroundReturn *mBackground(char *input_file, char *ofile, double A, d
          abuffer = (double *)NULL;
 
          strcpy(returnStruct->msg, montage_msgstr);
+         //////////////////////////////////////////////////////////////////////
+            DLIO_PROFILER_C_FUNCTION_END();
          return returnStruct;
       }
 
@@ -827,6 +863,8 @@ struct mBackgroundReturn *mBackground(char *input_file, char *ofile, double A, d
             abuffer = (double *)NULL;
 
             strcpy(returnStruct->msg, montage_msgstr);
+            //////////////////////////////////////////////////////////////////////
+            DLIO_PROFILER_C_FUNCTION_END();
             return returnStruct;
          }
 
@@ -871,6 +909,8 @@ struct mBackgroundReturn *mBackground(char *input_file, char *ofile, double A, d
       abuffer = (double *)NULL;
 
       strcpy(returnStruct->msg, montage_msgstr);
+      //////////////////////////////////////////////////////////////////////
+            DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -908,6 +948,9 @@ struct mBackgroundReturn *mBackground(char *input_file, char *ofile, double A, d
          abuffer = (double *)NULL;
 
          strcpy(returnStruct->msg, montage_msgstr);
+
+         //////////////////////////////////////////////////////////////////////
+            DLIO_PROFILER_C_FUNCTION_END();
          return returnStruct;
       }
 
@@ -948,6 +991,8 @@ struct mBackgroundReturn *mBackground(char *input_file, char *ofile, double A, d
 
    returnStruct->time  = (double)(currtime - start);
 
+   //////////////////////////////////////////////////////////////////////
+            DLIO_PROFILER_C_FUNCTION_END();
    return returnStruct;
 }
 

@@ -8,6 +8,8 @@
 #include <mAdd.h>
 #include <montage.h>
 
+#include <dlio_profiler/dlio_profiler.h>
+
 #define MAXSTR 1024
 
 
@@ -23,6 +25,8 @@ extern int getopt(int argc, char *const *argv, const char *options);
 
 int main(int argc, char **argv)
 {
+   /////////////////////////////////////////////
+   DLIO_PROFILER_C_INIT(NULL, NULL, NULL);
    int  c;
 
    int  debug     = 0;
@@ -167,6 +171,9 @@ int main(int argc, char **argv)
    /************************************/
 
    returnStruct = mAdd(path, tblfile, template, imgfile, shrink, haveAreas, coadd, debug);
+
+      /////////////////////////////////////////////////////////////////////////
+   DLIO_PROFILER_C_FINI();
 
    if(returnStruct->status == 1)
    {

@@ -76,6 +76,8 @@ Version  Developer        Date     Change
 #include <mProject.h>
 #include <montage.h>
 
+#include <dlio_profiler/dlio_profiler.h>
+
 #define MAXSTR  256
 #define MAXFILE 256
 
@@ -278,6 +280,10 @@ struct mProjectReturn *mProject(char *input_file, char *ofile, char *template_fi
                                 double drizzle, double fluxScale, int energyMode, int expand, int fullRegion, 
                                 int debugin)
 {
+   ///////////////////////////////////////////////////////////////////////////////
+   DLIO_PROFILER_C_FUNCTION_START();
+   DLIO_PROFILER_C_FUNCTION_UPDATE_STR("input_file", input_file);
+
    int       i, j, k, l, m;
    int       nullcnt, border, bordertype;
    long      fpixel[4], nelements;
@@ -660,6 +666,10 @@ struct mProjectReturn *mProject(char *input_file, char *ofile, char *template_fi
       {
          strcpy(returnStruct->msg, montage_msgstr);
          mProject_cleanup();
+
+         /////////////////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
+
          return returnStruct;
       }
 
@@ -684,6 +694,10 @@ struct mProjectReturn *mProject(char *input_file, char *ofile, char *template_fi
       {
          sprintf(returnStruct->msg, "Debug output pixel coordinates out of range");
          mProject_cleanup();
+
+         /////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
+
          return returnStruct;
       }
    }
@@ -940,6 +954,10 @@ struct mProjectReturn *mProject(char *input_file, char *ofile, char *template_fi
    {
       sprintf(returnStruct->msg, "Not enough memory for output data image array");
       mProject_cleanup();
+
+      ///////////////////////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
+
       return returnStruct;
    }
 
@@ -951,6 +969,10 @@ struct mProjectReturn *mProject(char *input_file, char *ofile, char *template_fi
       {
          sprintf(returnStruct->msg, "Not enough memory for output data image array");
          mProject_cleanup();
+
+         ///////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
+
          return returnStruct;
       }
    }
@@ -986,6 +1008,9 @@ struct mProjectReturn *mProject(char *input_file, char *ofile, char *template_fi
    {
       sprintf(returnStruct->msg, "Not enough memory for output area image array");
       mProject_cleanup();
+      ///////////////////////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
+
       return returnStruct;
    }
 
@@ -997,6 +1022,8 @@ struct mProjectReturn *mProject(char *input_file, char *ofile, char *template_fi
       {
          sprintf(returnStruct->msg, "Not enough memory for output area image array");
          mProject_cleanup();
+         ///////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
          return returnStruct;
       }
    }
@@ -1073,6 +1100,8 @@ struct mProjectReturn *mProject(char *input_file, char *ofile, char *template_fi
       {
          mProject_printFitsError(status);
          mProject_cleanup();
+         ///////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
          return returnStruct;
       }
 
@@ -1083,6 +1112,8 @@ struct mProjectReturn *mProject(char *input_file, char *ofile, char *template_fi
          {
             mProject_printFitsError(status);
             mProject_cleanup();
+            ///////////////////////////////////////////////////////////////
+            DLIO_PROFILER_C_FUNCTION_END();
             return returnStruct;
          }
       }
@@ -1737,6 +1768,8 @@ struct mProjectReturn *mProject(char *input_file, char *ofile, char *template_fi
       mProject_printFitsError(status);
       strcpy(returnStruct->msg, montage_msgstr);
       mProject_cleanup();
+      ///////////////////////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -1746,6 +1779,8 @@ struct mProjectReturn *mProject(char *input_file, char *ofile, char *template_fi
    {
       strcpy(returnStruct->msg, "Debug output done.");
       mProject_cleanup();
+      ///////////////////////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -1834,6 +1869,8 @@ struct mProjectReturn *mProject(char *input_file, char *ofile, char *template_fi
       mProject_printError("All pixels are blank. Check for overlap of output template with image file.");
       strcpy(returnStruct->msg, montage_msgstr);
       mProject_cleanup();
+      ///////////////////////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -1868,6 +1905,8 @@ struct mProjectReturn *mProject(char *input_file, char *ofile, char *template_fi
       mProject_printFitsError(status);
       strcpy(returnStruct->msg, montage_msgstr);
       mProject_cleanup();
+      ///////////////////////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -1876,6 +1915,8 @@ struct mProjectReturn *mProject(char *input_file, char *ofile, char *template_fi
       mProject_printFitsError(status);
       strcpy(returnStruct->msg, montage_msgstr);
       mProject_cleanup();
+      ///////////////////////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -1890,6 +1931,8 @@ struct mProjectReturn *mProject(char *input_file, char *ofile, char *template_fi
       mProject_printFitsError(status);
       strcpy(returnStruct->msg, montage_msgstr);
       mProject_cleanup();
+      ///////////////////////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -1923,6 +1966,8 @@ struct mProjectReturn *mProject(char *input_file, char *ofile, char *template_fi
       mProject_printFitsError(status);
       strcpy(returnStruct->msg, montage_msgstr);
       mProject_cleanup();
+      ///////////////////////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -1937,6 +1982,8 @@ struct mProjectReturn *mProject(char *input_file, char *ofile, char *template_fi
       mProject_printFitsError(status);
       strcpy(returnStruct->msg, montage_msgstr);
       mProject_cleanup();
+      ///////////////////////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -1957,6 +2004,8 @@ struct mProjectReturn *mProject(char *input_file, char *ofile, char *template_fi
       mProject_printFitsError(status);
       strcpy(returnStruct->msg, montage_msgstr);
       mProject_cleanup();
+      ///////////////////////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -1966,6 +2015,8 @@ struct mProjectReturn *mProject(char *input_file, char *ofile, char *template_fi
       mProject_printFitsError(status);
       strcpy(returnStruct->msg, montage_msgstr);
       mProject_cleanup();
+      ///////////////////////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -1981,6 +2032,8 @@ struct mProjectReturn *mProject(char *input_file, char *ofile, char *template_fi
       mProject_printFitsError(status);
       strcpy(returnStruct->msg, montage_msgstr);
       mProject_cleanup();
+      ///////////////////////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -1990,6 +2043,8 @@ struct mProjectReturn *mProject(char *input_file, char *ofile, char *template_fi
       mProject_printFitsError(status);
       strcpy(returnStruct->msg, montage_msgstr);
       mProject_cleanup();
+      ///////////////////////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -1999,6 +2054,8 @@ struct mProjectReturn *mProject(char *input_file, char *ofile, char *template_fi
       mProject_printFitsError(status);
       strcpy(returnStruct->msg, montage_msgstr);
       mProject_cleanup();
+      ///////////////////////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -2010,6 +2067,8 @@ struct mProjectReturn *mProject(char *input_file, char *ofile, char *template_fi
          mProject_printFitsError(status);
          strcpy(returnStruct->msg, montage_msgstr);
          mProject_cleanup();
+         ///////////////////////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
          return returnStruct;
       }
 
@@ -2019,6 +2078,8 @@ struct mProjectReturn *mProject(char *input_file, char *ofile, char *template_fi
          mProject_printFitsError(status);
          strcpy(returnStruct->msg, montage_msgstr);
          mProject_cleanup();
+         ///////////////////////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
          return returnStruct;
       }
    }
@@ -2030,6 +2091,8 @@ struct mProjectReturn *mProject(char *input_file, char *ofile, char *template_fi
          mProject_printFitsError(status);
          strcpy(returnStruct->msg, montage_msgstr);
          mProject_cleanup();
+         ///////////////////////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
          return returnStruct;
       }
 
@@ -2039,6 +2102,8 @@ struct mProjectReturn *mProject(char *input_file, char *ofile, char *template_fi
          mProject_printFitsError(status);
          strcpy(returnStruct->msg, montage_msgstr);
          mProject_cleanup();
+         ///////////////////////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
          return returnStruct;
       }
    }
@@ -2051,6 +2116,8 @@ struct mProjectReturn *mProject(char *input_file, char *ofile, char *template_fi
       mProject_printFitsError(status);
       strcpy(returnStruct->msg, montage_msgstr);
       mProject_cleanup();
+      ///////////////////////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -2060,6 +2127,8 @@ struct mProjectReturn *mProject(char *input_file, char *ofile, char *template_fi
       mProject_printFitsError(status);
       strcpy(returnStruct->msg, montage_msgstr);
       mProject_cleanup();
+      ///////////////////////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -2069,6 +2138,8 @@ struct mProjectReturn *mProject(char *input_file, char *ofile, char *template_fi
       mProject_printFitsError(status);
       strcpy(returnStruct->msg, montage_msgstr);
       mProject_cleanup();
+      ///////////////////////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -2080,6 +2151,8 @@ struct mProjectReturn *mProject(char *input_file, char *ofile, char *template_fi
          mProject_printFitsError(status);
          strcpy(returnStruct->msg, montage_msgstr);
          mProject_cleanup();
+         ///////////////////////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
          return returnStruct;
       }
 
@@ -2089,6 +2162,8 @@ struct mProjectReturn *mProject(char *input_file, char *ofile, char *template_fi
          mProject_printFitsError(status);
          strcpy(returnStruct->msg, montage_msgstr);
          mProject_cleanup();
+         ///////////////////////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
          return returnStruct;
       }
    }
@@ -2100,6 +2175,8 @@ struct mProjectReturn *mProject(char *input_file, char *ofile, char *template_fi
          mProject_printFitsError(status);
          strcpy(returnStruct->msg, montage_msgstr);
          mProject_cleanup();
+         ///////////////////////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
          return returnStruct;
       }
 
@@ -2109,6 +2186,8 @@ struct mProjectReturn *mProject(char *input_file, char *ofile, char *template_fi
          mProject_printFitsError(status);
          strcpy(returnStruct->msg, montage_msgstr);
          mProject_cleanup();
+         ///////////////////////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
          return returnStruct;
       }
    }
@@ -2139,6 +2218,8 @@ struct mProjectReturn *mProject(char *input_file, char *ofile, char *template_fi
          mProject_printFitsError(status);
          strcpy(returnStruct->msg, montage_msgstr);
          mProject_cleanup();
+         ///////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
          return returnStruct;
       }
 
@@ -2168,6 +2249,8 @@ struct mProjectReturn *mProject(char *input_file, char *ofile, char *template_fi
          mProject_printFitsError(status);
          strcpy(returnStruct->msg, montage_msgstr);
          mProject_cleanup();
+         ///////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
          return returnStruct;
       }
 
@@ -2201,6 +2284,10 @@ struct mProjectReturn *mProject(char *input_file, char *ofile, char *template_fi
    returnStruct->time = (double)(currtime - start);
 
    mProject_cleanup();
+
+   ///////////////////////////////////////////////////////////////
+   DLIO_PROFILER_C_FUNCTION_END();
+
    return returnStruct;
 }
 

@@ -8,6 +8,7 @@
 #include <mDiff.h>
 #include <montage.h>
 
+
 #define MAXSTR  256
 
 
@@ -19,6 +20,7 @@ extern int getopt(int argc, char *const *argv, const char *options);
 
 int main(int argc, char **argv)
 {
+
    int    c, debug;
    int    noAreas;
 

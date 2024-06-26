@@ -7,6 +7,8 @@
 
 #include <montage.h>
 
+#include <dlio_profiler/dlio_profiler.h>
+
 #define MAXSTR 4096
 
 extern char *optarg;
@@ -25,7 +27,8 @@ extern int getopt(int argc, char *const *argv, const char *options);
 /*******************************************************************/
 
 int main(int argc, char **argv)
-{
+{  /////////////////////////////////////////////
+   DLIO_PROFILER_C_INIT(NULL, NULL, NULL);
    int   ch;
 
    int   keep;
@@ -133,6 +136,8 @@ int main(int argc, char **argv)
 
    returnStruct = mDiffFit(input_file1, input_file2, output_file, template_file, keep, levelOnly, noAreas, border, debug);
 
+   /////////////////////////////////////////////////////////////////////////
+   DLIO_PROFILER_C_FINI();
    if(returnStruct->status == 1)
    {
        fprintf(montage_status, "[struct stat=\"ERROR\", msg=\"%s\"]\n", returnStruct->msg);

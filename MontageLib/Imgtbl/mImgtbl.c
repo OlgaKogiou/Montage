@@ -8,6 +8,8 @@
 #include <montage.h>
 #include <mImgtbl.h>
 
+#include <dlio_profiler/dlio_profiler.h>
+
 #define MAXSTR 1024
 
 extern char *optarg;
@@ -25,6 +27,9 @@ extern int getopt(int argc, char *const *argv, const char *options);
 
 int main(int argc, char **argv)
 {
+   /////////////////////////////////////////////
+   DLIO_PROFILER_C_INIT(NULL, NULL, NULL);
+
    int   c;
 
    int   debug;
@@ -103,6 +108,8 @@ int main(int argc, char **argv)
             {
                printf ("[struct stat=\"ERROR\", msg=\"Cannot open status file: %s\"]\n",
                   optarg);
+               /////////////////////////////////////////////////////////////////////////
+               DLIO_PROFILER_C_FINI();
                exit(1);
             }
             break;
@@ -118,6 +125,8 @@ int main(int argc, char **argv)
 
          default:
             fprintf(montage_status, "[struct stat=\"ERROR\", msg=\"Illegal argument: -%c\"]\n", c);
+            /////////////////////////////////////////////////////////////////////////
+            DLIO_PROFILER_C_FINI();
             exit(1);
             break;
       }
@@ -126,6 +135,8 @@ int main(int argc, char **argv)
    if (argc - optind < 2) 
    {
        fprintf(montage_status, "[struct stat=\"ERROR\", msg=\"Usage: %s [-rcCaidbdz][-s statusfile][-f fieldlistfile][-t imglist] directory images.tbl\"]\n", argv[0]);
+       /////////////////////////////////////////////////////////////////////////
+       DLIO_PROFILER_C_FINI();
        exit(1);
    }
 
@@ -142,11 +153,15 @@ int main(int argc, char **argv)
    if(returnStruct->status == 1)
    {
        fprintf(montage_status, "[struct stat=\"ERROR\", msg=\"%s\"]\n", returnStruct->msg);
+       /////////////////////////////////////////////////////////////////////////
+       DLIO_PROFILER_C_FINI();
        exit(1);
    }
    else
    {
        fprintf(montage_status, "[struct stat=\"OK\", module=\"mImgtbl\", %s]\n", returnStruct->msg);
+       /////////////////////////////////////////////////////////////////////////
+       DLIO_PROFILER_C_FINI();
        exit(0);
    }
 }

@@ -33,6 +33,8 @@ Version  Developer        Date     Change
 #include <mViewer.h>
 #include <montage.h>
 
+#include <dlio_profiler/dlio_profiler.h>
+
 #define  MAXSTR    1024
 #define  MAXGRID     16
 #define  MAXCAT     128
@@ -198,6 +200,10 @@ static int mViewer_debug;
 
 struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFmt, char *fontFile, int debugin)
 {
+   ///////////////////////////////////////////////////////////////////////////////
+   DLIO_PROFILER_C_FUNCTION_START();
+   DLIO_PROFILER_C_FUNCTION_UPDATE_STR("params", params);
+   
    int       argc;
    char     *argv[4096];
 
@@ -815,6 +821,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
          if(fjson == (FILE *)NULL)
          {
             strcpy(returnStruct->msg, "Cannot open input JSON file.");
+            ////////////////////////////////////////////////////////////////
+            DLIO_PROFILER_C_FUNCTION_END();
             return returnStruct;
          }
 
@@ -839,6 +847,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
       if((sv = json_struct(layout)) == (JSON *)NULL)
       {
          strcpy(returnStruct->msg, "Invalid JSON structure.");
+         ////////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
          return returnStruct;
       }
 
@@ -854,6 +864,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
          if(end < valstr+strlen(valstr))
          {
             strcpy(returnStruct->msg, "Font scale parameter must an integer.");
+            ////////////////////////////////////////////////////////////////
+            DLIO_PROFILER_C_FUNCTION_END();
             return returnStruct;
          }
       }
@@ -866,6 +878,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
          if(mViewer_colorLookup(valstr, &ovlyred, &ovlygreen, &ovlyblue))
          {
             strcpy(returnStruct->msg, montage_msgstr);
+            ////////////////////////////////////////////////////////////////
+            DLIO_PROFILER_C_FUNCTION_END();
             return returnStruct;
          }
       }
@@ -880,6 +894,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
          if(fontScale <= 0.  || end < valstr+strlen(valstr))
          {
             strcpy(returnStruct->msg, "Font scale parameter must a number greater than zero.");
+            ////////////////////////////////////////////////////////////////
+            DLIO_PROFILER_C_FUNCTION_END();
             return returnStruct;
          }
       }
@@ -894,6 +910,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
          if(lineWidth <= 0.  || end < valstr+strlen(valstr))
          {
             strcpy(returnStruct->msg, "Line width`parameter must a number greater than zero.");
+            ////////////////////////////////////////////////////////////////
+            DLIO_PROFILER_C_FUNCTION_END();
             return returnStruct;
          }
       }
@@ -908,6 +926,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
          if(alpha < 0. || alpha > 1. || end < valstr+strlen(valstr))
          {
             strcpy(returnStruct->msg, "Alpha parameter must a number between zero and one.");
+            ////////////////////////////////////////////////////////////////
+            DLIO_PROFILER_C_FUNCTION_END();
             return returnStruct;
          }
       }
@@ -922,6 +942,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
          if(imgalpha < 0. || imgalpha > 1. || end < valstr+strlen(valstr))
          {
             strcpy(returnStruct->msg, "Alpha parameter must a number between zero and one.");
+            ////////////////////////////////////////////////////////////////
+            DLIO_PROFILER_C_FUNCTION_END();
             return returnStruct;
          }
       }
@@ -936,6 +958,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
          if(brightness < -255. || brightness > 255. || end < valstr+strlen(valstr))
          {
             strcpy(returnStruct->msg, "Brightness parameter must a number between -255 and 255.");
+            ////////////////////////////////////////////////////////////////
+            DLIO_PROFILER_C_FUNCTION_END();
             return returnStruct;
          }
       }
@@ -950,6 +974,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
          if(bbrightness < -255. || bbrightness > 255. || end < valstr+strlen(valstr))
          {
             strcpy(returnStruct->msg, "Bbrightness parameter must a number between -255 and 255.");
+            ////////////////////////////////////////////////////////////////
+            DLIO_PROFILER_C_FUNCTION_END();
             return returnStruct;
          }
       }
@@ -964,6 +990,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
          if(gbrightness < -255. || gbrightness > 255. || end < valstr+strlen(valstr))
          {
             strcpy(returnStruct->msg, "Gbrightness parameter must a number between -255 and 255.");
+            ////////////////////////////////////////////////////////////////
+            DLIO_PROFILER_C_FUNCTION_END();
             return returnStruct;
          }
       }
@@ -978,6 +1006,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
          if(rbrightness < -255. || rbrightness > 255. || end < valstr+strlen(valstr))
          {
             strcpy(returnStruct->msg, "Rbrightness parameter must a number between -255 and 255.");
+            ////////////////////////////////////////////////////////////////
+            DLIO_PROFILER_C_FUNCTION_END();
             return returnStruct;
          }
       }
@@ -992,6 +1022,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
          if(contrast < -255. || contrast > 255. || end < valstr+strlen(valstr))
          {
             strcpy(returnStruct->msg, "Contrast parameter must a number between -255 and 255.");
+            ////////////////////////////////////////////////////////////////
+            DLIO_PROFILER_C_FUNCTION_END();
             return returnStruct;
          }
 
@@ -1008,6 +1040,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
          if(bcontrast < -255. || bcontrast > 255. || end < valstr+strlen(valstr))
          {
             strcpy(returnStruct->msg, "Bcontrast parameter must a number between -255 and 255.");
+            ////////////////////////////////////////////////////////////////
+            DLIO_PROFILER_C_FUNCTION_END();
             return returnStruct;
          }
 
@@ -1024,6 +1058,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
          if(gcontrast < -255. || gcontrast > 255. || end < valstr+strlen(valstr))
          {
             strcpy(returnStruct->msg, "Gcontrast parameter must a number between -255 and 255.");
+            ////////////////////////////////////////////////////////////////
+            DLIO_PROFILER_C_FUNCTION_END();
             return returnStruct;
          }
 
@@ -1040,6 +1076,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
          if(rcontrast < -255. || rcontrast > 255. || end < valstr+strlen(valstr))
          {
             strcpy(returnStruct->msg, "Rcontrast parameter must a number between -255 and 255.");
+            ////////////////////////////////////////////////////////////////
+            DLIO_PROFILER_C_FUNCTION_END();
             return returnStruct;
          }
 
@@ -1056,6 +1094,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
          if(end < valstr+strlen(valstr))
          {
             strcpy(returnStruct->msg, "Tzero parameter must be an integer (nominally zero or one for false/true).");
+            ////////////////////////////////////////////////////////////////
+            DLIO_PROFILER_C_FUNCTION_END();
             return returnStruct;
          }
       }
@@ -1070,6 +1110,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
          if(colortable < 0 || colortable > 12 || end < valstr+strlen(valstr))
          {
             strcpy(returnStruct->msg, "Color table index must be a number between 0 and 12");
+            ////////////////////////////////////////////////////////////////
+            DLIO_PROFILER_C_FUNCTION_END();
             return returnStruct;
          }
       }
@@ -1084,6 +1126,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
          if(truecolor <= 1. || truecolor > 4. || end < valstr+strlen(valstr))
          {
             strcpy(returnStruct->msg, "Color enhancement parameter must be a number between 1. and 4.");
+            ////////////////////////////////////////////////////////////////
+            DLIO_PROFILER_C_FUNCTION_END();
             return returnStruct;
          }
       }
@@ -1104,6 +1148,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
          if(mViewer_parseSymbol(valstr, &symNPnt, &symNMax, &symType, &symRotAngle))
          {
             strcpy(returnStruct->msg, "Invalid symbol attribute");
+            ////////////////////////////////////////////////////////////////
+            DLIO_PROFILER_C_FUNCTION_END();
             return returnStruct;
          }
       }
@@ -1116,6 +1162,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
          if(json_val(layout, "gray_file.fits_file", grayfile) == (char *)NULL)
          {
             strcpy(returnStruct->msg, "Gray file has no 'fits_file' attribute.");
+            ////////////////////////////////////////////////////////////////
+            DLIO_PROFILER_C_FUNCTION_END();
             return returnStruct;
          }
 
@@ -1135,6 +1183,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
                if(checkHdr)
                {
                   strcpy(returnStruct->msg, checkHdr);
+                  ////////////////////////////////////////////////////////////////
+                  DLIO_PROFILER_C_FUNCTION_END();
                   return returnStruct;
                }
             }
@@ -1147,6 +1197,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
                if(colortable < 0 || colortable > 12 || end < valstr+strlen(valstr))
                {
                   strcpy(returnStruct->msg, "Color table index must be a number between 0 and 12");
+                  ////////////////////////////////////////////////////////////////
+                  DLIO_PROFILER_C_FUNCTION_END();
                   return returnStruct;
                }
             }
@@ -1201,6 +1253,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
             if(fits_open_file(&grayfptr, grayfile, READONLY, &status))
             {
                sprintf(returnStruct->msg, "Image file %s invalid FITS", grayfile);
+               ////////////////////////////////////////////////////////////////
+               DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
 
@@ -1209,6 +1263,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
                if(fits_movabs_hdu(grayfptr, hdu+1, NULL, &status))
                {
                   sprintf(returnStruct->msg, "Can't find HDU %d", hdu);
+                  ////////////////////////////////////////////////////////////////
+                  DLIO_PROFILER_C_FUNCTION_END();
                   return returnStruct;
                }
             }
@@ -1240,6 +1296,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
                if(checkHdr)
                {
                   strcpy(returnStruct->msg, checkHdr);
+                  ////////////////////////////////////////////////////////////////
+                  DLIO_PROFILER_C_FUNCTION_END();
                   return returnStruct;
                }
             }
@@ -1294,6 +1352,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
             if(fits_open_file(&redfptr, redfile, READONLY, &status))
             {
                sprintf(returnStruct->msg, "Image file %s invalid FITS", redfile);
+               ////////////////////////////////////////////////////////////////
+               DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
 
@@ -1302,6 +1362,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
                if(fits_movabs_hdu(redfptr, hdu+1, NULL, &status))
                {
                   sprintf(returnStruct->msg, "Can't find HDU %d", hdu);
+                  ////////////////////////////////////////////////////////////////
+                  DLIO_PROFILER_C_FUNCTION_END();
                   return returnStruct;
                }
             }
@@ -1314,6 +1376,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
          if(json_val(layout, "green_file.fits_file", greenfile) == (char *)NULL)
          {
             strcpy(returnStruct->msg, "Green file has no 'fits_file' attribute.");
+            ////////////////////////////////////////////////////////////////
+            DLIO_PROFILER_C_FUNCTION_END();
             return returnStruct;
          }
 
@@ -1333,6 +1397,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
                if(checkHdr)
                {
                   strcpy(returnStruct->msg, checkHdr);
+                  ////////////////////////////////////////////////////////////////
+                  DLIO_PROFILER_C_FUNCTION_END();
                   return returnStruct;
                }
             }
@@ -1387,6 +1453,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
             if(fits_open_file(&greenfptr, greenfile, READONLY, &status))
             {
                sprintf(returnStruct->msg, "Image file %s invalid FITS", greenfile);
+               ////////////////////////////////////////////////////////////////
+               DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
 
@@ -1395,6 +1463,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
                if(fits_movabs_hdu(greenfptr, hdu+1, NULL, &status))
                {
                   sprintf(returnStruct->msg, "Can't find HDU %d", hdu);
+                  ////////////////////////////////////////////////////////////////
+                  DLIO_PROFILER_C_FUNCTION_END();
                   return returnStruct;
                }
             }
@@ -1407,6 +1477,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
          if(json_val(layout, "blue_file.fits_file", bluefile) == (char *)NULL)
          {
             strcpy(returnStruct->msg, "Blue file has no 'fits_file' attribute.");
+            ////////////////////////////////////////////////////////////////
+            DLIO_PROFILER_C_FUNCTION_END();
             return returnStruct;
          }
 
@@ -1426,6 +1498,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
                if(checkHdr)
                {
                   strcpy(returnStruct->msg, checkHdr);
+                  ////////////////////////////////////////////////////////////////
+                  DLIO_PROFILER_C_FUNCTION_END();
                   return returnStruct;
                }
             }
@@ -1480,6 +1554,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
             if(fits_open_file(&bluefptr, bluefile, READONLY, &status))
             {
                sprintf(returnStruct->msg, "Image file %s invalid FITS", bluefile);
+               ////////////////////////////////////////////////////////////////
+               DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
 
@@ -1488,6 +1564,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
                if(fits_movabs_hdu(bluefptr, hdu+1, NULL, &status))
                {
                   sprintf(returnStruct->msg, "Can't find HDU %d", hdu);
+                  ////////////////////////////////////////////////////////////////
+                  DLIO_PROFILER_C_FUNCTION_END();
                   return returnStruct;
                }
             }
@@ -1524,6 +1602,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
          if(json_val(layout, keystr, ovlyType) == (char *)NULL)
          {
             sprintf(returnStruct->msg, "Overlay %d has no 'type' attribute.", noverlay);
+            ////////////////////////////////////////////////////////////////
+            DLIO_PROFILER_C_FUNCTION_END();
             return returnStruct;
          }
 
@@ -1558,6 +1638,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
                if(grid[ngrid].fontscale <= 0.  || end < valstr+strlen(valstr))
                {
                   sprintf(returnStruct->msg, "Font scale (overlay %d) parameter must a number greater than zero.", noverlay);
+                  ////////////////////////////////////////////////////////////////
+                  DLIO_PROFILER_C_FUNCTION_END();
                   return returnStruct;
                }
             }
@@ -1576,6 +1658,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
                if(grid[ngrid].linewidth <= 0.  || end < valstr+strlen(valstr))
                {
                   sprintf(returnStruct->msg, "Line width (overlay %d) parameter must a number greater than zero.", noverlay);
+                  ////////////////////////////////////////////////////////////////
+                  DLIO_PROFILER_C_FUNCTION_END();
                   return returnStruct;
                }
             }
@@ -1592,6 +1676,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
                if(grid[ngrid].alpha <= 0.  || end < valstr+strlen(valstr))
                {
                   sprintf(returnStruct->msg, "Alpha (overlay %d) parameter must a number between zero and one.", noverlay);
+                  ////////////////////////////////////////////////////////////////
+                  DLIO_PROFILER_C_FUNCTION_END();
                   return returnStruct;
                }
             }
@@ -1604,6 +1690,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
             if(json_val(layout, keystr, valstr) == (char *)NULL)
             {
                sprintf(returnStruct->msg, "Overlay %d has no 'coord_sys' attribute.", noverlay);
+               ////////////////////////////////////////////////////////////////
+               DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
 
@@ -1625,6 +1713,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
                if(mViewer_colorLookup(valstr, &(cat[ncat].red), &(cat[ncat].green), &(cat[ncat].blue)))
                {
                   strcpy(returnStruct->msg, montage_msgstr);
+                  ////////////////////////////////////////////////////////////////
+                  DLIO_PROFILER_C_FUNCTION_END();
                   return returnStruct;
                }
             }
@@ -1692,6 +1782,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
                if(mViewer_parseSymbol(valstr, &(cat[ncat].symNPnt), &(cat[ncat].symNMax), &(cat[ncat].symType), &(cat[ncat].symRotAngle)))
                {
                   sprintf(returnStruct->msg, "Invalid symbol attribute for overlay %d.", noverlay);
+                  ////////////////////////////////////////////////////////////////
+                  DLIO_PROFILER_C_FUNCTION_END();
                   return returnStruct;
                }
             }
@@ -1732,6 +1824,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
                if(end < (valstr + (int)strlen(valstr)))
                {
                   sprintf(returnStruct->msg, "Invalid symbol size in overlay %d.", noverlay);
+                  ////////////////////////////////////////////////////////////////
+                  DLIO_PROFILER_C_FUNCTION_END();
                   return returnStruct;
                }
             }
@@ -1751,6 +1845,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
                if(cat[ncat].linewidth <= 0.  || end < valstr+strlen(valstr))
                {
                   sprintf(returnStruct->msg, "Line width (overlay %d) parameter must a number greater than zero.", noverlay);
+                  ////////////////////////////////////////////////////////////////
+                  DLIO_PROFILER_C_FUNCTION_END();
                   return returnStruct;
                }
             }
@@ -1767,6 +1863,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
                if(cat[ncat].alpha <= 0.  || end < valstr+strlen(valstr))
                {
                   sprintf(returnStruct->msg, "Alpha (overlay %d) parameter must a number between zero and one.", noverlay);
+                  ////////////////////////////////////////////////////////////////
+                  DLIO_PROFILER_C_FUNCTION_END();
                   return returnStruct;
                }
             }
@@ -1821,6 +1919,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
                if(mViewer_colorLookup(valstr, &(cat[ncat].red), &(cat[ncat].green), &(cat[ncat].blue)))
                {
                   strcpy(returnStruct->msg, montage_msgstr);
+                  ////////////////////////////////////////////////////////////////
+                  DLIO_PROFILER_C_FUNCTION_END();
                   return returnStruct;
                }
             }
@@ -1850,6 +1950,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
             if(json_val(layout, keystr, valstr) == (char *)NULL)
             {
                sprintf(returnStruct->msg, "Overlay %d has no 'data_file' attribute.", noverlay);
+               ////////////////////////////////////////////////////////////////
+               DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
 
@@ -1865,6 +1967,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
                if(cat[ncat].linewidth <= 0.  || end < valstr+strlen(valstr))
                {
                   sprintf(returnStruct->msg, "Line width (overlay %d) parameter must a number greater than zero.", noverlay);
+                  ////////////////////////////////////////////////////////////////
+                  DLIO_PROFILER_C_FUNCTION_END();
                   return returnStruct;
                }
             }
@@ -1881,6 +1985,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
                if(cat[ncat].alpha <= 0.  || end < valstr+strlen(valstr))
                {
                   sprintf(returnStruct->msg, "Alpha (overlay %d) parameter must a number between zero and one.", noverlay);
+                  ////////////////////////////////////////////////////////////////
+                  DLIO_PROFILER_C_FUNCTION_END();
                   return returnStruct;
                }
             }
@@ -1902,6 +2008,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
                if(mViewer_colorLookup(valstr, &(mark[nmark].red), &(mark[nmark].green), &(mark[nmark].blue)))
                {
                   strcpy(returnStruct->msg, montage_msgstr);
+                  ////////////////////////////////////////////////////////////////
+                  DLIO_PROFILER_C_FUNCTION_END();
                   return returnStruct;
                }
             }
@@ -1931,6 +2039,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
             if(json_val(layout, keystr, valstr) == (char *)NULL)
             {
                sprintf(returnStruct->msg, "Overlay %d has no 'lon' attribute.", noverlay);
+               ////////////////////////////////////////////////////////////////
+               DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
 
@@ -1945,6 +2055,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
             if(json_val(layout, keystr, valstr) == (char *)NULL)
             {
                sprintf(returnStruct->msg, "Overlay %d has no 'lat' attribute.", noverlay);
+               ////////////////////////////////////////////////////////////////
+               DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
 
@@ -1961,6 +2073,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
                if(mViewer_parseSymbol(valstr, &(mark[nmark].symNPnt), &(mark[nmark].symNMax), &(mark[nmark].symType), &(mark[nmark].symRotAngle)))
                {
                   sprintf(returnStruct->msg, "Invalid symbol attribute for overlay %d.", noverlay);
+                  ////////////////////////////////////////////////////////////////
+                  DLIO_PROFILER_C_FUNCTION_END();
                   return returnStruct;
                }
             }
@@ -2001,6 +2115,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
                if(end < (valstr + (int)strlen(valstr)))
                {
                   sprintf(returnStruct->msg, "Invalid symbol size in overlay %d.", noverlay);
+                  ////////////////////////////////////////////////////////////////
+                  DLIO_PROFILER_C_FUNCTION_END();
                   return returnStruct;
                }
             }
@@ -2020,6 +2136,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
                if(mark[nmark].linewidth <= 0.  || end < valstr+strlen(valstr))
                {
                   sprintf(returnStruct->msg, "Line width (overlay %d) parameter must a number greater than zero.", noverlay);
+                  ////////////////////////////////////////////////////////////////
+                  DLIO_PROFILER_C_FUNCTION_END();
                   return returnStruct;
                }
             }
@@ -2036,6 +2154,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
                if(mark[nmark].alpha <= 0.  || end < valstr+strlen(valstr))
                {
                   sprintf(returnStruct->msg, "Alpha (overlay %d) parameter must a number between zero and one.", noverlay);
+                  ////////////////////////////////////////////////////////////////
+                  DLIO_PROFILER_C_FUNCTION_END();
                   return returnStruct;
                }
             }
@@ -2057,6 +2177,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
                if(mViewer_colorLookup(valstr, &(label[nlabel].red), &(label[nlabel].green), &(label[nlabel].blue)))
                {
                   strcpy(returnStruct->msg, montage_msgstr);
+                  ////////////////////////////////////////////////////////////////
+                  DLIO_PROFILER_C_FUNCTION_END();
                   return returnStruct;
                }
             }
@@ -2077,6 +2199,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
                if(label[nlabel].fontscale <= 0.  || end < valstr+strlen(valstr))
                {
                   sprintf(returnStruct->msg, "Font scale (overlay %d) parameter must a number greater than zero.", noverlay);
+                  ////////////////////////////////////////////////////////////////
+                  DLIO_PROFILER_C_FUNCTION_END();
                   return returnStruct;
                }
             }
@@ -2095,6 +2219,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
                if(label[nlabel].alpha <= 0.  || end < valstr+strlen(valstr))
                {
                   sprintf(returnStruct->msg, "Alpha (overlay %d) parameter must a number between zero and one.", noverlay);
+                  ////////////////////////////////////////////////////////////////
+                  DLIO_PROFILER_C_FUNCTION_END();
                   return returnStruct;
                }
             }
@@ -2107,6 +2233,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
             if(json_val(layout, keystr, valstr) == (char *)NULL)
             {
                sprintf(returnStruct->msg, "Overlay %d has no 'lon' attribute.", noverlay);
+               ////////////////////////////////////////////////////////////////
+               DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
 
@@ -2121,6 +2249,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
             if(json_val(layout, keystr, valstr) == (char *)NULL)
             {
                sprintf(returnStruct->msg, "Overlay %d has no 'lat' attribute.", noverlay);
+               ////////////////////////////////////////////////////////////////
+               DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
 
@@ -2135,6 +2265,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
             if(json_val(layout, keystr, valstr) == (char *)NULL)
             {
                sprintf(returnStruct->msg, "Overlay %d has no 'text' attribute.", noverlay);
+               ////////////////////////////////////////////////////////////////
+               DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
             strcpy(label[nlabel].text, valstr);
@@ -2163,6 +2295,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
       if(argc < 2)
       {
          strcpy(returnStruct->msg, "Parameters: [-d] [-nowcs] [-noflip] [-t(rue-color) power] [-ct color-table] [-grid csys [epoch]] -gray in.fits minrange maxrange [logpower/gaussian] -red red.fits rminrange rmaxrange [rlogpower/gaussian] -green green.fits gminrange gmaxrange [glogpower/gaussian] -blue blue.fits bminrange bmaxrange [blogpower/gaussian] -out out.png");
+         ////////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
          return returnStruct;
       }
 
@@ -2189,6 +2323,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
             if(fontScale <= 0.  || end < argv[i+1]+strlen(argv[i+1]))
             {
                strcpy(returnStruct->msg, "Font scale parameter must a number greater than zero.");
+               ////////////////////////////////////////////////////////////////
+               DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
 
@@ -2205,6 +2341,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
             if(lineWidth <= 0.  || end < argv[i+1]+strlen(argv[i+1]))
             {
                strcpy(returnStruct->msg, "Line width parameter must a number greater than zero.");
+               ////////////////////////////////////////////////////////////////
+               DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
 
@@ -2221,6 +2359,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
             if(alpha < 0. || alpha > 1. || end < argv[i+1]+strlen(argv[i+1]))
             {
                strcpy(returnStruct->msg, "Opacity (alpha) must a number between zero and one.");
+               ////////////////////////////////////////////////////////////////
+               DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
 
@@ -2237,6 +2377,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
             if(imgalpha < 0. || imgalpha > 1. || end < argv[i+1]+strlen(argv[i+1]))
             {
                strcpy(returnStruct->msg, "Image opacity (alpha) must a number between zero and one.");
+               ////////////////////////////////////////////////////////////////
+               DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
 
@@ -2253,6 +2395,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
             if(brightness < -255. || brightness > 255. || end < argv[i+1]+strlen(argv[i+1]))
             {
                strcpy(returnStruct->msg, "Brightness parameter must a number between -255 and 255.");
+               ////////////////////////////////////////////////////////////////
+               DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
 
@@ -2269,6 +2413,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
             if(bbrightness < -255. || bbrightness > 255. || end < argv[i+1]+strlen(argv[i+1]))
             {
                strcpy(returnStruct->msg, "Bbrightness parameter must a number between -255 and 255.");
+               ////////////////////////////////////////////////////////////////
+               DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
 
@@ -2285,6 +2431,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
             if(gbrightness < -255. || gbrightness > 255. || end < argv[i+1]+strlen(argv[i+1]))
             {
                strcpy(returnStruct->msg, "Gbrightness parameter must a number between -255 and 255.");
+               ////////////////////////////////////////////////////////////////
+               DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
 
@@ -2301,6 +2449,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
             if(rbrightness < -255. || rbrightness > 255. || end < argv[i+1]+strlen(argv[i+1]))
             {
                strcpy(returnStruct->msg, "Rbrightness parameter must a number between -255 and 255.");
+               ////////////////////////////////////////////////////////////////
+               DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
 
@@ -2317,6 +2467,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
             if(contrast < -255. || contrast > 255. || end < argv[i+1]+strlen(argv[i+1]))
             {
                strcpy(returnStruct->msg, "Contrast parameter must a number between -255 and 255.");
+               ////////////////////////////////////////////////////////////////
+               DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
 
@@ -2335,6 +2487,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
             if(bcontrast < -255. || bcontrast > 255. || end < argv[i+1]+strlen(argv[i+1]))
             {
                strcpy(returnStruct->msg, "Bcontrast parameter must a number between -255 and 255.");
+               ////////////////////////////////////////////////////////////////
+               DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
 
@@ -2353,6 +2507,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
             if(gcontrast < -255. || gcontrast > 255. || end < argv[i+1]+strlen(argv[i+1]))
             {
                strcpy(returnStruct->msg, "Gcontrast parameter must a number between -255 and 255.");
+               ////////////////////////////////////////////////////////////////
+               DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
 
@@ -2371,6 +2527,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
             if(rcontrast < -255. || rcontrast > 255. || end < argv[i+1]+strlen(argv[i+1]))
             {
                strcpy(returnStruct->msg, "Rcontrast parameter must a number between -255 and 255.");
+               ////////////////////////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
 
@@ -2389,6 +2547,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
             if(end < valstr+strlen(valstr))
             {
                strcpy(returnStruct->msg, "Tzero parameter must be an integer (nominally zero or one for false/true).");
+               ////////////////////////////////////////////////////////////////
+               DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
          }
@@ -2425,6 +2585,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
             if(truecolor < 1.  || truecolor > 4. || end < argv[i+1]+strlen(argv[i+1]))
             {
                strcpy(returnStruct->msg, "Color enhancement parameter must be a number between 1. and 4.");
+               ////////////////////////////////////////////////////////////////
+               DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
 
@@ -2445,6 +2607,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
             if(mViewer_colorLookup(colorstr, &ovlyred, &ovlygreen, &ovlyblue))
             {
                strcpy(returnStruct->msg, montage_msgstr);
+               ////////////////////////////////////////////////////////////////
+               DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
          }
@@ -2579,6 +2743,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
             if(i+3 >= argc)
             {
                strcpy(returnStruct->msg, "Too few arguments following -label flag");
+               ////////////////////////////////////////////////////////////////
+               DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
 
@@ -2607,6 +2773,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
             if(i+1 >= argc)
             {
                strcpy(returnStruct->msg, "Too few arguments following -symbol flag");
+               ////////////////////////////////////////////////////////////////
+               DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
 
@@ -2646,6 +2814,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
                if(end < (argv[i+1] + (int)strlen(argv[i+1])))
                {
                   strcpy(returnStruct->msg, "Invalid symbol size");
+                  ////////////////////////////////////////////////////////////////
+               DLIO_PROFILER_C_FUNCTION_END();
                   return returnStruct;
                }
 
@@ -2756,6 +2926,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
                         else
                         {
                            strcpy(returnStruct->msg, "Invalid symbol type");
+                           ////////////////////////////////////////////////////////////////
+                           DLIO_PROFILER_C_FUNCTION_END();
                            return returnStruct;
                         }
                      }
@@ -2769,6 +2941,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
                         if(end < (argv[i+1] + (int)strlen(argv[i+1])) || symNPnt < 3)
                         {
                            strcpy(returnStruct->msg, "Invalid vertex count for symbol (must be an integer >= 3)");
+                           ////////////////////////////////////////////////////////////////
+                           DLIO_PROFILER_C_FUNCTION_END();
                            return returnStruct;
                         }
 
@@ -2781,6 +2955,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
                            if(end < (argv[i+1] + (int)strlen(argv[i+1])))
                            {
                               strcpy(returnStruct->msg, "Invalid rotation angle for symbol (must be number)");
+                              ////////////////////////////////////////////////////////////////
+                           DLIO_PROFILER_C_FUNCTION_END();
                               return returnStruct;
                            }
 
@@ -2807,6 +2983,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
                if(i+1 >= argc)
                {
                   strcpy(returnStruct->msg, "Too few arguments following -scalecol flag");
+                  ////////////////////////////////////////////////////////////////
+                           DLIO_PROFILER_C_FUNCTION_END();
                   return returnStruct;
                }
 
@@ -2853,6 +3031,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
                if(i+1 >= argc)
                {
                   strcpy(returnStruct->msg, "No color column given.");
+                  ////////////////////////////////////////////////////////////////
+                           DLIO_PROFILER_C_FUNCTION_END();
                   return returnStruct;
                }
 
@@ -2877,6 +3057,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
                if(i+1 >= argc)
                {
                   strcpy(returnStruct->msg, "No symbol size column given.");
+                  ////////////////////////////////////////////////////////////////
+                           DLIO_PROFILER_C_FUNCTION_END();
                   return returnStruct;
                }
 
@@ -2901,6 +3083,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
                if(i+1 >= argc)
                {
                   strcpy(returnStruct->msg, "No symbol shape column given.");
+                  ////////////////////////////////////////////////////////////////
+                           DLIO_PROFILER_C_FUNCTION_END();
                   return returnStruct;
                }
 
@@ -2925,6 +3109,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
                if(i+1 >= argc)
                {
                   strcpy(returnStruct->msg, "No label column given.");
+                  ////////////////////////////////////////////////////////////////
+                           DLIO_PROFILER_C_FUNCTION_END();
                   return returnStruct;
                }
 
@@ -2942,6 +3128,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
             if(i+1 >= argc)
             {
                strcpy(returnStruct->msg, "Too few arguments following -catalog flag");
+               ////////////////////////////////////////////////////////////////
+                           DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
 
@@ -3011,6 +3199,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
             if(i+2 >= argc)
             {
                strcpy(returnStruct->msg, "Too few arguments following -mark flag");
+               ////////////////////////////////////////////////////////////////
+                           DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
 
@@ -3054,6 +3244,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
             if(i+1 >= argc)
             {
                strcpy(returnStruct->msg, "Too few arguments following -imginfo flag");
+               ////////////////////////////////////////////////////////////////
+                           DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
 
@@ -3102,6 +3294,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
             if(i+1 >= argc)
             {
                strcpy(returnStruct->msg, "Too few arguments following -drawing flag");
+               ////////////////////////////////////////////////////////////////
+                           DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
 
@@ -3122,6 +3316,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
             if(i+1 >= argc)
             {
                strcpy(returnStruct->msg, "Too few arguments following -ct flag");
+               ////////////////////////////////////////////////////////////////
+                           DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
 
@@ -3130,6 +3326,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
             if(colortable < 0  || colortable > 12 || end < argv[i+1]+strlen(argv[i+1]))
             {
                strcpy(returnStruct->msg, "Color table index must be a number between 0 and 12");
+               ////////////////////////////////////////////////////////////////
+                           DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
 
@@ -3145,6 +3343,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
             if(i+1 >= argc)
             {
                strcpy(returnStruct->msg, "Too few arguments following -gray flag");
+               ////////////////////////////////////////////////////////////////
+                           DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
 
@@ -3164,6 +3364,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
                if(checkHdr)
                {
                   strcpy(returnStruct->msg, checkHdr);
+                  ////////////////////////////////////////////////////////////////
+                           DLIO_PROFILER_C_FUNCTION_END();
                   return returnStruct;
                }
             }
@@ -3174,6 +3376,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
             if(i+3 >= argc)
             {
                strcpy(returnStruct->msg, "Too few arguments following -gray flag");
+               ////////////////////////////////////////////////////////////////
+                           DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
 
@@ -3251,6 +3455,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
             if(fits_open_file(&grayfptr, grayfile, READONLY, &status))
             {
                sprintf(returnStruct->msg, "Image file %s invalid FITS", grayfile);
+               ////////////////////////////////////////////////////////////////
+                           DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
 
@@ -3259,6 +3465,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
                if(fits_movabs_hdu(grayfptr, hdu+1, NULL, &status))
                {
                   sprintf(returnStruct->msg, "Can't find HDU %d", hdu);
+                  ////////////////////////////////////////////////////////////////
+                           DLIO_PROFILER_C_FUNCTION_END();
                   return returnStruct;
                }
             }
@@ -3274,6 +3482,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
             if(i+3 >= argc)
             {
                strcpy(returnStruct->msg, "Too few arguments following -red flag");
+               ////////////////////////////////////////////////////////////////
+                           DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
 
@@ -3293,6 +3503,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
                if(checkHdr)
                {
                   strcpy(returnStruct->msg, checkHdr);
+                  ////////////////////////////////////////////////////////////////
+                           DLIO_PROFILER_C_FUNCTION_END();
                   return returnStruct;
                }
             }
@@ -3303,6 +3515,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
             if(i+3 >= argc)
             {
                strcpy(returnStruct->msg, "Too few arguments following -red flag");
+               ////////////////////////////////////////////////////////////////
+                           DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
 
@@ -3380,6 +3594,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
             if(fits_open_file(&redfptr, redfile, READONLY, &status))
             {
                sprintf(returnStruct->msg, "Image file %s invalid FITS", redfile);
+               ////////////////////////////////////////////////////////////////
+                           DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
 
@@ -3390,6 +3606,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
                if(fits_movabs_hdu(redfptr, hdu+1, NULL, &status))
                {
                   sprintf(returnStruct->msg, "Can't find HDU %d", hdu);
+                  ////////////////////////////////////////////////////////////////
+                           DLIO_PROFILER_C_FUNCTION_END();
                   return returnStruct;
                }
             }
@@ -3403,6 +3621,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
             if(i+3 >= argc)
             {
                strcpy(returnStruct->msg, "Too few arguments following -green flag");
+               ////////////////////////////////////////////////////////////////
+                           DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
 
@@ -3422,6 +3642,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
                if(checkHdr)
                {
                   strcpy(returnStruct->msg, checkHdr);
+                  ////////////////////////////////////////////////////////////////
+                           DLIO_PROFILER_C_FUNCTION_END();
                   return returnStruct;
                }
             }
@@ -3432,6 +3654,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
             if(i+3 >= argc)
             {
                strcpy(returnStruct->msg, "Too few arguments following -green flag");
+               ////////////////////////////////////////////////////////////////
+                           DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
 
@@ -3509,6 +3733,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
             if(fits_open_file(&greenfptr, greenfile, READONLY, &status))
             {
                sprintf(returnStruct->msg, "Image file %s invalid FITS", greenfile);
+               ////////////////////////////////////////////////////////////////
+                           DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
 
@@ -3517,6 +3743,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
                if(fits_movabs_hdu(greenfptr, hdu+1, NULL, &status))
                {
                   sprintf(returnStruct->msg, "Can't find HDU %d", hdu);
+                  ////////////////////////////////////////////////////////////////
+                           DLIO_PROFILER_C_FUNCTION_END();
                   return returnStruct;
                }
             }
@@ -3532,6 +3760,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
             if(i+3 >= argc)
             {
                strcpy(returnStruct->msg, "Too few arguments following -blue flag");
+               ////////////////////////////////////////////////////////////////
+                           DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
 
@@ -3551,6 +3781,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
                if(checkHdr)
                {
                   strcpy(returnStruct->msg, checkHdr);
+                  ////////////////////////////////////////////////////////////////
+                           DLIO_PROFILER_C_FUNCTION_END();
                   return returnStruct;
                }
             }
@@ -3560,6 +3792,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
             if(i+3 >= argc)
             {
                strcpy(returnStruct->msg, "Too few arguments following -blue flag");
+               ////////////////////////////////////////////////////////////////
+                           DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
 
@@ -3637,6 +3871,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
             if(fits_open_file(&bluefptr, bluefile, READONLY, &status))
             {
                sprintf(returnStruct->msg, "Image file %s invalid FITS", bluefile);
+               ////////////////////////////////////////////////////////////////
+                           DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
 
@@ -3645,6 +3881,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
                if(fits_movabs_hdu(bluefptr, hdu+1, NULL, &status))
                {
                   sprintf(returnStruct->msg, "Can't find HDU %d", hdu);
+                  ////////////////////////////////////////////////////////////////
+                           DLIO_PROFILER_C_FUNCTION_END();
                   return returnStruct;
                }
             }
@@ -3661,6 +3899,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
             if(i+1 >= argc)
             {
                strcpy(returnStruct->msg, "No output file given following -out/-png flag");
+               ////////////////////////////////////////////////////////////////
+                           DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
 
@@ -3676,6 +3916,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
             if(i+1 >= argc)
             {
                strcpy(returnStruct->msg, "No output file given following -jpeg flag");
+               ////////////////////////////////////////////////////////////////
+                           DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
 
@@ -3687,6 +3929,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
             if(jpegfp == (FILE *)NULL)
             {
                sprintf(returnStruct->msg, "Error opening output file '%s'", jpegfile);
+               ////////////////////////////////////////////////////////////////
+                           DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
 
@@ -3700,6 +3944,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
             if(i+1 >= argc)
             {
                strcpy(returnStruct->msg, "No output file given following -fits flag");
+               ////////////////////////////////////////////////////////////////
+                           DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
 
@@ -3717,6 +3963,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
                sprintf(returnStruct->msg, "Invalid 'directive': %s (probably a misplaced argument)", argv[i]);
             else
                sprintf(returnStruct->msg, "Invalid directive: %s", argv[i]);
+               ////////////////////////////////////////////////////////////////
+                           DLIO_PROFILER_C_FUNCTION_END();
             return returnStruct;
          }
       }
@@ -3878,6 +4126,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
    if(strlen(ofitsfile) > 0 && isRGB)
    {
       strcpy(returnStruct->msg, "Must be in gray mode to output FITS file.");
+      ////////////////////////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
    
@@ -3887,18 +4137,24 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
       if(strlen(redfile) == 0)
       {
          strcpy(returnStruct->msg, "No input 'red' FITS file name given");
+         ////////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
          return returnStruct;
       }
 
       if(strlen(greenfile) == 0)
       {
          strcpy(returnStruct->msg, "No input 'green' FITS file name given");
+         ////////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
          return returnStruct;
       }
 
       if(strlen(bluefile) == 0)
       {
          strcpy(returnStruct->msg, "No input 'blue' FITS file name given");
+         ////////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
          return returnStruct;
       }
    }
@@ -3907,6 +4163,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
       if(strlen(grayfile) == 0)
       {
          strcpy(returnStruct->msg, "No input FITS file name given");
+         ////////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
          return returnStruct;
       }
    }
@@ -3917,6 +4175,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
    && strlen(ofitsfile) == 0)
    {
       strcpy(returnStruct->msg, "No output PNG or JPEG file name given");
+      ////////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -3949,18 +4209,24 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
       if(strlen(redfile) == 0)
       {
          strcpy(returnStruct->msg, "Color mode but no red image given");
+         ////////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
          return returnStruct;
       }
 
       if(strlen(greenfile) == 0)
       {
          strcpy(returnStruct->msg, "Color mode but no green image given");
+         ////////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
          return returnStruct;
       }
 
       if(strlen(bluefile) == 0)
       {
          strcpy(returnStruct->msg, "Color mode but no blue image given");
+         ////////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
          return returnStruct;
       }
 
@@ -3992,6 +4258,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
             {
                mViewer_memCleanup();
                strcpy(returnStruct->msg, "NAXIS1 is zero (red image).");
+               ////////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
 
@@ -4005,6 +4273,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
             {
                mViewer_memCleanup();
                strcpy(returnStruct->msg, "NAXIS2 is zero (red image).");
+               ////////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
 
@@ -4019,6 +4289,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
          else
          {
             sprintf(returnStruct->msg, "WCS init failed for [%s].", redfile);
+            ////////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
             return returnStruct;
          }
       }
@@ -4190,6 +4462,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
             {
                mViewer_memCleanup();
                strcpy(returnStruct->msg, "NAXIS1 is zero (green image).");
+               ////////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
 
@@ -4203,6 +4477,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
             {
                mViewer_memCleanup();
                strcpy(returnStruct->msg, "NAXIS2 is zero (green image).");
+               ////////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
 
@@ -4217,6 +4493,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
          else
          {
             sprintf(returnStruct->msg, "WCS init failed for [%s].", greenfile);
+            ////////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
             return returnStruct;
          }
       }
@@ -4248,6 +4526,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
          || fabs(crota2 - wcs->rot) > 1.e-9)
          {
             strcpy(returnStruct->msg, "Red and green FITS images don't have matching projections (use -nowcs flag if you still want to proceed).");
+            ////////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
             return returnStruct;
          }
       }
@@ -4305,6 +4585,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
             {
                mViewer_memCleanup();
                strcpy(returnStruct->msg, "NAXIS1 is zero (blue image).");
+               ////////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
 
@@ -4318,6 +4600,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
             {
                mViewer_memCleanup();
                strcpy(returnStruct->msg, "NAXIS2 is zero (blue image).");
+               ////////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
 
@@ -4332,6 +4616,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
          else
          {
             sprintf(returnStruct->msg, "WCS init failed for [%s].", bluefile);
+            ////////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
             return returnStruct;
          }
       }
@@ -4363,6 +4649,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
          || fabs(crota2 - wcs->rot) > 1.e-9)
          {
             strcpy(returnStruct->msg, "Red and blue FITS images don't have matching projections (use -nowcs flag if you still want to proceed).");
+            ////////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
             return returnStruct;
          }
       }
@@ -4515,6 +4803,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
                              &rdatamin, &rdatamax, &median, &sigma, &redType))
          {
             strcpy(returnStruct->msg, montage_msgstr);
+            ////////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
             return returnStruct;
          }
       }
@@ -4529,6 +4819,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
                               redPlaneCount,  redPlanes))
          {
             strcpy(returnStruct->msg, montage_msgstr);
+            ////////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
             return returnStruct;
          }
       }
@@ -4564,6 +4856,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
                              &gdatamin, &gdatamax, &median, &sigma, &greenType))
          {
             strcpy(returnStruct->msg, montage_msgstr);
+            ////////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
             return returnStruct;
          }
       }
@@ -4578,6 +4872,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
                               greenPlaneCount,  greenPlanes))
          {
             strcpy(returnStruct->msg, montage_msgstr);
+            ////////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
             return returnStruct;
          }
       }
@@ -4613,6 +4909,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
                              &bdatamin, &bdatamax, &median, &sigma, &blueType))
          {
             strcpy(returnStruct->msg, montage_msgstr);
+            ////////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
             return returnStruct;
          }
       }
@@ -4627,6 +4925,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
                               bluePlaneCount,  bluePlanes))
          {
             strcpy(returnStruct->msg, montage_msgstr);
+            ////////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
             return returnStruct;
          }
       }
@@ -5321,6 +5621,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
       {
          mViewer_memCleanup();
          strcpy(returnStruct->msg, "Grayscale/pseudocolor mode but no gray image given");
+         ////////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
          return returnStruct;
       }
 
@@ -5355,6 +5657,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
             {
                mViewer_memCleanup();
                strcpy(returnStruct->msg, "NAXIS1 is zero.");
+               ////////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
 
@@ -5368,6 +5672,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
             {
                mViewer_memCleanup();
                strcpy(returnStruct->msg, "NAXIS2 is zero.");
+               ////////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
 
@@ -5383,6 +5689,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
          {
             mViewer_memCleanup();
             sprintf(returnStruct->msg, "WCS init failed for [%s].", grayfile);
+            ////////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
             return returnStruct;
          }
       }
@@ -5571,6 +5879,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
          {
             mViewer_memCleanup();
             strcpy(returnStruct->msg, montage_msgstr);
+            ////////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
             return returnStruct;
          }
       }
@@ -5586,6 +5896,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
          {
             mViewer_memCleanup();
             strcpy(returnStruct->msg, montage_msgstr);
+            ////////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
             return returnStruct;
          }
       }
@@ -5740,6 +6052,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
          {
              mViewer_memCleanup();
              sprintf(returnStruct->msg, "Can't open output FITS file [%s].", ofitsfile);
+             ////////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
              return returnStruct;
          }
 
@@ -5748,6 +6062,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
          {
              mViewer_memCleanup();
              sprintf(returnStruct->msg, "Error copying FITS header.");
+             ////////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
              return returnStruct;
          }
       }
@@ -6173,6 +6489,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
                tclose();
                mViewer_memCleanup();
                sprintf(returnStruct->msg, "Cannot find 'ra' and 'dec (or 'lon','lat' or 'crval1','crval2') in table [%s]", cat[i].file);
+               ////////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
 
@@ -6190,6 +6508,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
                   tclose();
                   mViewer_memCleanup();
                   sprintf(returnStruct->msg, "Cannot find flux/mag column [%s] in table [%s]", cat[i].scaleColumn, cat[i].file);
+                  ////////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
                   return returnStruct;
                }
             }
@@ -6208,6 +6528,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
                   tclose();
                   mViewer_memCleanup();
                   sprintf(returnStruct->msg, "Cannot find color column [%s] in table [%s]", cat[i].colorColumn, cat[i].file);
+                  ////////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
                   return returnStruct;
                }
             }
@@ -6226,6 +6548,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
                   tclose();
                   mViewer_memCleanup();
                   sprintf(returnStruct->msg, "Cannot find symbol size column [%s] in table [%s]", cat[i].symSizeColumn, cat[i].file);
+                  ////////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
                   return returnStruct;
                }
             }
@@ -6244,6 +6568,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
                   tclose();
                   mViewer_memCleanup();
                   sprintf(returnStruct->msg, "Cannot find symbol shape column [%s] in table [%s]", cat[i].symShapeColumn, cat[i].file);
+                  ////////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
                   return returnStruct;
                }
             }
@@ -6262,6 +6588,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
                   tclose();
                   mViewer_memCleanup();
                   sprintf(returnStruct->msg, "Cannot find label column [%s] in table [%s]", cat[i].labelColumn, cat[i].file);
+                  ////////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
                   return returnStruct;
                }
             }
@@ -6312,6 +6640,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
                      {
                         mViewer_memCleanup();
                         strcpy(returnStruct->msg, montage_msgstr);
+                        ////////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
                         return returnStruct;
                      }
                   }
@@ -6505,6 +6835,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
                tclose();
                mViewer_memCleanup();
                sprintf(returnStruct->msg, "Invalid table file [%s].\" ]\n", cat[i].file);
+               ////////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
             
@@ -6523,6 +6855,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
                   tclose();
                   mViewer_memCleanup();
                   sprintf(returnStruct->msg, "Cannot find color column [%s] in table [%s]", cat[i].colorColumn, cat[i].file);
+                  ////////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
                   return returnStruct;
                }
             }
@@ -6584,6 +6918,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
                   tclose();
                   mViewer_memCleanup();
                   sprintf(returnStruct->msg, "Cannot find 'ra1', 'dec1', etc. corners or WCS columns in table [%s]\n", cat[i].file);
+                  ////////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
                   return returnStruct;
                }
             }
@@ -6614,6 +6950,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
                      {
                         mViewer_memCleanup();
                         strcpy(returnStruct->msg, montage_msgstr);
+                        ////////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
                         return returnStruct;
                      }
                   }
@@ -6681,6 +7019,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
                      tclose();
                      mViewer_memCleanup();
                      sprintf(returnStruct->msg, "Bad WCS for image %d", nimages);
+                     ////////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
                      return returnStruct;
                   }
 
@@ -6901,6 +7241,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
       if(pngError)
       {
          strcpy(returnStruct->msg, lodepng_error_text(pngError));
+         ////////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
          return(returnStruct);
       }
    }
@@ -6910,6 +7252,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
       {
           mViewer_memCleanup();
           sprintf(returnStruct->msg, "Can't open output FITS file [%s].", ofitsfile);
+          ////////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
           return returnStruct;
       }
    }
@@ -7055,7 +7399,8 @@ struct mViewerReturn *mViewer(char *params, char *outFile, int mode, char *outFm
 
       strcpy(returnStruct->bunit, bunit);
    }
-
+   ////////////////////////////////////////////////////////////////
+   DLIO_PROFILER_C_FUNCTION_END();
    return returnStruct;
 }
 

@@ -114,6 +114,7 @@ Version  Developer        Date     Change
 #include <mAdd.h>
 #include <montage.h>
 
+#include <dlio_profiler/dlio_profiler.h>
 
 #define MAXSTR    1024
 #define MAXFILE     50
@@ -247,6 +248,11 @@ static char montage_msgstr[1024];
 struct mAddReturn *mAdd(char *inpath, char *tblfile, char *template_file, char *outfile,
                         int shrink, int haveAreas, int coadd, int debugin)
 {
+
+   ///////////////////////////////////////////////////////////////////////////////
+   DLIO_PROFILER_C_FUNCTION_START();
+   DLIO_PROFILER_C_FUNCTION_UPDATE_STR("inpath", inpath);
+
    int       i, j, ncols, namelen, imgcount;
    int       lineout, itemp, pixdepth, ipix, jcnt;
    int       inbuflen;
@@ -386,6 +392,8 @@ struct mAddReturn *mAdd(char *inpath, char *tblfile, char *template_file, char *
    if(checkHdr)
    {
       strcpy(returnStruct->msg, checkHdr);
+      ////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -427,6 +435,8 @@ struct mAddReturn *mAdd(char *inpath, char *tblfile, char *template_file, char *
    if(mAdd_readTemplate(template_file) > 0)
    {
       strcpy(returnStruct->msg, montage_msgstr);
+      ///////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -447,6 +457,8 @@ struct mAddReturn *mAdd(char *inpath, char *tblfile, char *template_file, char *
    if(ncols <= 0)
    {
       sprintf(returnStruct->msg, "Invalid image metadata file: %s", tblfile);
+      ///////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -494,6 +506,8 @@ struct mAddReturn *mAdd(char *inpath, char *tblfile, char *template_file, char *
    || ictype1 < 0 || ictype2 < 0)
    {
       strcpy(returnStruct->msg, "Need columns: cntr,fname, crpix1, crpix2, cdelt1, cdelt2, naxis1, naxis2, crval1, crval2 ctype1, ctype2 in image list");
+      ///////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -687,6 +701,8 @@ struct mAddReturn *mAdd(char *inpath, char *tblfile, char *template_file, char *
             { 
                mAdd_allocError("file info (realloc)");
                strcpy(returnStruct->msg, montage_msgstr);
+               ///////////////////////////////////////////////
+               DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
          }
@@ -737,6 +753,8 @@ struct mAddReturn *mAdd(char *inpath, char *tblfile, char *template_file, char *
             sprintf(errstr, "CRVAL1 CAR pixel offset (%-g) not integer for image %s", valOffset, infile[ifile]);
             mAdd_printError(errstr);
             strcpy(returnStruct->msg, montage_msgstr);
+            ///////////////////////////////////////////////
+            DLIO_PROFILER_C_FUNCTION_END();
             return returnStruct;
          }
 
@@ -750,6 +768,8 @@ struct mAddReturn *mAdd(char *inpath, char *tblfile, char *template_file, char *
             sprintf(errstr, "CRVAL2 CAR pixel offset (%.2f) not integer for image %s", valOffset, infile[ifile]);
             mAdd_printError(errstr);
             strcpy(returnStruct->msg, montage_msgstr);
+            ///////////////////////////////////////////////
+            DLIO_PROFILER_C_FUNCTION_END();
             return returnStruct;
          }
 
@@ -773,6 +793,8 @@ struct mAddReturn *mAdd(char *inpath, char *tblfile, char *template_file, char *
    {
       mAdd_allocError("file info structs");
       strcpy(returnStruct->msg, montage_msgstr);
+      ///////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -784,6 +806,8 @@ struct mAddReturn *mAdd(char *inpath, char *tblfile, char *template_file, char *
       {
          mAdd_allocError("area file info structs");
          strcpy(returnStruct->msg, montage_msgstr);
+         ///////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
          return returnStruct;
       }
    }
@@ -846,12 +870,16 @@ struct mAddReturn *mAdd(char *inpath, char *tblfile, char *template_file, char *
    {
       mAdd_allocError("input buffer");
       strcpy(returnStruct->msg, montage_msgstr);
+      ///////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
    if(!input_buffer_area)
    {
       mAdd_allocError("input area buffer");
       strcpy(returnStruct->msg, montage_msgstr);
+      ///////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -901,6 +929,8 @@ struct mAddReturn *mAdd(char *inpath, char *tblfile, char *template_file, char *
       {
          mAdd_printError("Images are not in same pixel space");
          strcpy(returnStruct->msg, montage_msgstr);
+         ///////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
          return returnStruct;
       }
 
@@ -966,6 +996,8 @@ struct mAddReturn *mAdd(char *inpath, char *tblfile, char *template_file, char *
    {
       mAdd_allocError("start/end info");
       strcpy(returnStruct->msg, montage_msgstr);
+      ///////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -1059,6 +1091,8 @@ struct mAddReturn *mAdd(char *inpath, char *tblfile, char *template_file, char *
    {
       mAdd_allocError("data line pointers");
       strcpy(returnStruct->msg, montage_msgstr);
+      ///////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -1070,6 +1104,8 @@ struct mAddReturn *mAdd(char *inpath, char *tblfile, char *template_file, char *
       {
          mAdd_allocError("data line");
          strcpy(returnStruct->msg, montage_msgstr);
+         ///////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
          return returnStruct;
       }
    }
@@ -1081,6 +1117,8 @@ struct mAddReturn *mAdd(char *inpath, char *tblfile, char *template_file, char *
    {
       mAdd_allocError("area line pointers");
       strcpy(returnStruct->msg, montage_msgstr);
+      ///////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -1092,6 +1130,8 @@ struct mAddReturn *mAdd(char *inpath, char *tblfile, char *template_file, char *
       {
          mAdd_allocError("area line");
          strcpy(returnStruct->msg, montage_msgstr);
+         ///////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
          return returnStruct;
       }
    }
@@ -1102,6 +1142,8 @@ struct mAddReturn *mAdd(char *inpath, char *tblfile, char *template_file, char *
    {
       mAdd_allocError("data counts");
       strcpy(returnStruct->msg, montage_msgstr);
+      ///////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -1126,12 +1168,16 @@ struct mAddReturn *mAdd(char *inpath, char *tblfile, char *template_file, char *
    {
       mAdd_allocError("output data line");
       strcpy(returnStruct->msg, montage_msgstr);
+      ///////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
    if(!outarealine)
    {
       mAdd_allocError("output area line");
       strcpy(returnStruct->msg, montage_msgstr);
+      ///////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
      
@@ -1160,6 +1206,8 @@ struct mAddReturn *mAdd(char *inpath, char *tblfile, char *template_file, char *
    {
       mAdd_printFitsError(status);           
       strcpy(returnStruct->msg, montage_msgstr);
+      ///////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -1168,6 +1216,8 @@ struct mAddReturn *mAdd(char *inpath, char *tblfile, char *template_file, char *
    {
       mAdd_printFitsError(status);           
       strcpy(returnStruct->msg, montage_msgstr);
+      ///////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -1185,6 +1235,8 @@ struct mAddReturn *mAdd(char *inpath, char *tblfile, char *template_file, char *
    {
       mAdd_printFitsError(status);          
       strcpy(returnStruct->msg, montage_msgstr);
+      ///////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -1199,6 +1251,8 @@ struct mAddReturn *mAdd(char *inpath, char *tblfile, char *template_file, char *
    {
       mAdd_printFitsError(status);          
       strcpy(returnStruct->msg, montage_msgstr);
+      ///////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -1226,6 +1280,8 @@ struct mAddReturn *mAdd(char *inpath, char *tblfile, char *template_file, char *
    {
       mAdd_printFitsError(status);           
       strcpy(returnStruct->msg, montage_msgstr);
+      ///////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -1240,6 +1296,8 @@ struct mAddReturn *mAdd(char *inpath, char *tblfile, char *template_file, char *
    {
       mAdd_printFitsError(status);           
       strcpy(returnStruct->msg, montage_msgstr);
+      ///////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -1260,6 +1318,8 @@ struct mAddReturn *mAdd(char *inpath, char *tblfile, char *template_file, char *
    {
       mAdd_printFitsError(status);           
       strcpy(returnStruct->msg, montage_msgstr);
+      ///////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -1269,6 +1329,8 @@ struct mAddReturn *mAdd(char *inpath, char *tblfile, char *template_file, char *
    {
       mAdd_printFitsError(status);           
       strcpy(returnStruct->msg, montage_msgstr);
+      ///////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -1283,6 +1345,8 @@ struct mAddReturn *mAdd(char *inpath, char *tblfile, char *template_file, char *
    {
       mAdd_printFitsError(status);           
       strcpy(returnStruct->msg, montage_msgstr);
+      ///////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -1293,6 +1357,8 @@ struct mAddReturn *mAdd(char *inpath, char *tblfile, char *template_file, char *
    {
       mAdd_printFitsError(status);           
       strcpy(returnStruct->msg, montage_msgstr);
+      ///////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -1302,6 +1368,8 @@ struct mAddReturn *mAdd(char *inpath, char *tblfile, char *template_file, char *
    {
       mAdd_printFitsError(status);           
       strcpy(returnStruct->msg, montage_msgstr);
+      ///////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -1311,6 +1379,8 @@ struct mAddReturn *mAdd(char *inpath, char *tblfile, char *template_file, char *
    {
       mAdd_printFitsError(status);           
       strcpy(returnStruct->msg, montage_msgstr);
+      ///////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -1320,6 +1390,8 @@ struct mAddReturn *mAdd(char *inpath, char *tblfile, char *template_file, char *
    {
       mAdd_printFitsError(status);           
       strcpy(returnStruct->msg, montage_msgstr);
+      ///////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -1329,6 +1401,8 @@ struct mAddReturn *mAdd(char *inpath, char *tblfile, char *template_file, char *
    {
       mAdd_printFitsError(status);           
       strcpy(returnStruct->msg, montage_msgstr);
+      ///////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -1343,6 +1417,8 @@ struct mAddReturn *mAdd(char *inpath, char *tblfile, char *template_file, char *
    {
       mAdd_printFitsError(status);           
       strcpy(returnStruct->msg, montage_msgstr);
+      ///////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -1352,6 +1428,8 @@ struct mAddReturn *mAdd(char *inpath, char *tblfile, char *template_file, char *
    {
       mAdd_printFitsError(status);           
       strcpy(returnStruct->msg, montage_msgstr);
+      ///////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -1362,6 +1440,8 @@ struct mAddReturn *mAdd(char *inpath, char *tblfile, char *template_file, char *
    {
       mAdd_printFitsError(status);           
       strcpy(returnStruct->msg, montage_msgstr);
+      ///////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -1371,6 +1451,8 @@ struct mAddReturn *mAdd(char *inpath, char *tblfile, char *template_file, char *
    {
      mAdd_printFitsError(status);           
      strcpy(returnStruct->msg, montage_msgstr);
+     ///////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
      return returnStruct;
    }
 
@@ -1395,6 +1477,8 @@ struct mAddReturn *mAdd(char *inpath, char *tblfile, char *template_file, char *
    if(mAdd_listInit() > 0)
    {
       strcpy(returnStruct->msg, montage_msgstr);
+      ///////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -1431,6 +1515,8 @@ struct mAddReturn *mAdd(char *inpath, char *tblfile, char *template_file, char *
          if(mAdd_listAdd(startfile[currentstart]) > 0)
          {
             strcpy(returnStruct->msg, montage_msgstr);
+            ///////////////////////////////////////////////
+            DLIO_PROFILER_C_FUNCTION_END();
             return returnStruct;
          }
 
@@ -1456,6 +1542,8 @@ struct mAddReturn *mAdd(char *inpath, char *tblfile, char *template_file, char *
             {
                mAdd_printFitsError(status);           
                strcpy(returnStruct->msg, montage_msgstr);
+               ///////////////////////////////////////////////
+               DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
 
@@ -1472,6 +1560,8 @@ struct mAddReturn *mAdd(char *inpath, char *tblfile, char *template_file, char *
             {
                mAdd_printFitsError(status);           
                strcpy(returnStruct->msg, montage_msgstr);
+               ///////////////////////////////////////////////
+               DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
 
@@ -1518,6 +1608,8 @@ struct mAddReturn *mAdd(char *inpath, char *tblfile, char *template_file, char *
             if (open_files > MAXFITS)
             {
                sprintf(returnStruct->msg, "Too many open files");
+               ///////////////////////////////////////////////
+               DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
  
@@ -1528,6 +1620,8 @@ struct mAddReturn *mAdd(char *inpath, char *tblfile, char *template_file, char *
                 
                mAdd_printError(errstr);
                strcpy(returnStruct->msg, montage_msgstr);
+               ///////////////////////////////////////////////
+               DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
 
@@ -1548,6 +1642,8 @@ struct mAddReturn *mAdd(char *inpath, char *tblfile, char *template_file, char *
                {
                   sprintf(returnStruct->msg, "Too many open files");
                   strcpy(returnStruct->msg, montage_msgstr);
+                  ///////////////////////////////////////////////
+                  DLIO_PROFILER_C_FUNCTION_END();
                   return returnStruct;
                }
 
@@ -1557,6 +1653,8 @@ struct mAddReturn *mAdd(char *inpath, char *tblfile, char *template_file, char *
                   sprintf(errstr, "Area file %s missing or invalid FITS", inarea[ifile]);
                   mAdd_printError(errstr);
                   strcpy(returnStruct->msg, montage_msgstr);
+                  ///////////////////////////////////////////////
+                  DLIO_PROFILER_C_FUNCTION_END();
                   return returnStruct;
                }
 
@@ -1572,6 +1670,8 @@ struct mAddReturn *mAdd(char *inpath, char *tblfile, char *template_file, char *
             {
                mAdd_printFitsError(status);
                strcpy(returnStruct->msg, montage_msgstr);
+               ///////////////////////////////////////////////
+               DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
 
@@ -1586,6 +1686,8 @@ struct mAddReturn *mAdd(char *inpath, char *tblfile, char *template_file, char *
             if(imgWCS == (struct WorldCoor *)NULL)
             {
                sprintf(returnStruct->msg, "Input wcsinit() failed.");
+               ///////////////////////////////////////////////
+               DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
 
@@ -1594,6 +1696,8 @@ struct mAddReturn *mAdd(char *inpath, char *tblfile, char *template_file, char *
                sprintf(errstr, "Image %s header CTYPE1 does not match template", infile[ifile]);
                mAdd_printError(errstr);
                strcpy(returnStruct->msg, montage_msgstr);
+               ///////////////////////////////////////////////
+               DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
 
@@ -1602,6 +1706,8 @@ struct mAddReturn *mAdd(char *inpath, char *tblfile, char *template_file, char *
                sprintf(errstr, "Image %s header CTYPE2 does not match template", infile[ifile]);
                mAdd_printError(errstr);
                strcpy(returnStruct->msg, montage_msgstr);
+               ///////////////////////////////////////////////
+               DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
 
@@ -1612,6 +1718,8 @@ struct mAddReturn *mAdd(char *inpath, char *tblfile, char *template_file, char *
                   sprintf(errstr, "Image %s header CRVAL1 does not match template", infile[ifile]);
                   mAdd_printError(errstr);
                   strcpy(returnStruct->msg, montage_msgstr);
+                  ///////////////////////////////////////////////
+                  DLIO_PROFILER_C_FUNCTION_END();
                   return returnStruct;
                }
 
@@ -1620,6 +1728,8 @@ struct mAddReturn *mAdd(char *inpath, char *tblfile, char *template_file, char *
                   sprintf(errstr, "Image %s header CRVAL2 does not match template", infile[ifile]);
                   mAdd_printError(errstr);
                   strcpy(returnStruct->msg, montage_msgstr);
+                  ///////////////////////////////////////////////
+                  DLIO_PROFILER_C_FUNCTION_END();
                   return returnStruct;
                }
             }
@@ -1629,6 +1739,8 @@ struct mAddReturn *mAdd(char *inpath, char *tblfile, char *template_file, char *
                sprintf(errstr, "Image %s header CD/CDELT1 does not match template (%.8f vs %.8f)", infile[ifile], imgWCS->cd[0], hdrWCS->cd[0]);
                mAdd_printError(errstr);
                strcpy(returnStruct->msg, montage_msgstr);
+               ///////////////////////////////////////////////
+               DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
 
@@ -1637,6 +1749,8 @@ struct mAddReturn *mAdd(char *inpath, char *tblfile, char *template_file, char *
                sprintf(errstr, "Image %s header CD/CDELT2 does not match template (%.8f vs %.8f)", infile[ifile], imgWCS->cd[1], hdrWCS->cd[1]);
                mAdd_printError(errstr);
                strcpy(returnStruct->msg, montage_msgstr);
+               ///////////////////////////////////////////////
+               DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
 
@@ -1645,6 +1759,8 @@ struct mAddReturn *mAdd(char *inpath, char *tblfile, char *template_file, char *
                sprintf(errstr, "Image %s header EQUINOX does not match template", infile[ifile]);
                mAdd_printError(errstr);
                strcpy(returnStruct->msg, montage_msgstr);
+               ///////////////////////////////////////////////
+               DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
          } 
@@ -1682,6 +1798,8 @@ struct mAddReturn *mAdd(char *inpath, char *tblfile, char *template_file, char *
             {
               mAdd_printFitsError(status);
               strcpy(returnStruct->msg, montage_msgstr);
+              ///////////////////////////////////////////////
+               DLIO_PROFILER_C_FUNCTION_END();
               return returnStruct;
             }
 
@@ -1693,6 +1811,8 @@ struct mAddReturn *mAdd(char *inpath, char *tblfile, char *template_file, char *
                {
                  mAdd_printFitsError(status);
                  strcpy(returnStruct->msg, montage_msgstr);
+                 ///////////////////////////////////////////////
+                  DLIO_PROFILER_C_FUNCTION_END();
                  return returnStruct;
                }
             }
@@ -1752,6 +1872,8 @@ struct mAddReturn *mAdd(char *inpath, char *tblfile, char *template_file, char *
                      {
                         mAdd_allocError("data line (realloc)");
                         strcpy(returnStruct->msg, montage_msgstr);
+                        ///////////////////////////////////////////////
+                        DLIO_PROFILER_C_FUNCTION_END();
                         return returnStruct;
                      }
 
@@ -1762,6 +1884,8 @@ struct mAddReturn *mAdd(char *inpath, char *tblfile, char *template_file, char *
                      {
                         mAdd_allocError("area line (realloc)");
                         strcpy(returnStruct->msg, montage_msgstr);
+                        ///////////////////////////////////////////////
+                        DLIO_PROFILER_C_FUNCTION_END();
                         return returnStruct;
                      }
                   }
@@ -1817,6 +1941,8 @@ struct mAddReturn *mAdd(char *inpath, char *tblfile, char *template_file, char *
             {
                mAdd_printFitsError(status);           
                strcpy(returnStruct->msg, montage_msgstr);
+               ///////////////////////////////////////////////
+               DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
             }
 
@@ -1837,6 +1963,8 @@ struct mAddReturn *mAdd(char *inpath, char *tblfile, char *template_file, char *
                {
                   mAdd_printFitsError(status);           
                   strcpy(returnStruct->msg, montage_msgstr);
+                  ///////////////////////////////////////////////
+                  DLIO_PROFILER_C_FUNCTION_END();
                   return returnStruct;
                }
 
@@ -1919,6 +2047,8 @@ struct mAddReturn *mAdd(char *inpath, char *tblfile, char *template_file, char *
       {
          mAdd_printFitsError(status);
          strcpy(returnStruct->msg, montage_msgstr);
+         ///////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
          return returnStruct;
       }
 
@@ -1928,6 +2058,8 @@ struct mAddReturn *mAdd(char *inpath, char *tblfile, char *template_file, char *
       {
          mAdd_printFitsError(status);
          strcpy(returnStruct->msg, montage_msgstr);
+         ///////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
          return returnStruct;
       }
    }
@@ -1942,6 +2074,8 @@ struct mAddReturn *mAdd(char *inpath, char *tblfile, char *template_file, char *
    {
       mAdd_printFitsError(status);           
       strcpy(returnStruct->msg, montage_msgstr);
+      ///////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -1950,6 +2084,8 @@ struct mAddReturn *mAdd(char *inpath, char *tblfile, char *template_file, char *
    {
       mAdd_printFitsError(status);           
       strcpy(returnStruct->msg, montage_msgstr);
+      ///////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -1967,6 +2103,9 @@ struct mAddReturn *mAdd(char *inpath, char *tblfile, char *template_file, char *
    sprintf(returnStruct->json, "{\"time\":%.1f}", (double)(currtime - start));
 
    returnStruct->time = (double)(currtime - start);
+
+   ///////////////////////////////////////////////
+   DLIO_PROFILER_C_FUNCTION_END();
 
    return returnStruct;
 }

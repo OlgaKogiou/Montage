@@ -7,6 +7,8 @@
 #include <mViewer.h>
 #include <montage.h>
 
+#include <dlio_profiler/dlio_profiler.h>
+
 #define MAXSTR 32768
 #define STRLEN 1024
 
@@ -17,6 +19,8 @@
 
 int main(int argc, char **argv)
 {
+   /////////////////////////////////////////////
+   DLIO_PROFILER_C_INIT(NULL, NULL, NULL);
    int i, debug, len;
 
    char cmdstr  [MAXSTR];
@@ -63,6 +67,8 @@ int main(int argc, char **argv)
          {
             printf("[struct stat=\"ERROR\", msg=\"No PNG output file argument.\"]\n");
             fflush(stdout);
+            /////////////////////////////////////////////////////////////////////////
+            DLIO_PROFILER_C_FINI();
             exit(0);
          }
 
@@ -78,6 +84,8 @@ int main(int argc, char **argv)
          {
             printf("[struct stat=\"ERROR\", msg=\"No JPEG output file argument.\"]\n");
             fflush(stdout);
+            /////////////////////////////////////////////////////////////////////////
+            DLIO_PROFILER_C_FINI();
             exit(0);
          }
 
@@ -93,6 +101,8 @@ int main(int argc, char **argv)
          {
             printf("[struct stat=\"ERROR\", msg=\"No input JSON data argument.\"]\n");
             fflush(stdout);
+            /////////////////////////////////////////////////////////////////////////
+            DLIO_PROFILER_C_FINI();
             exit(0);
          }
 
@@ -107,6 +117,8 @@ int main(int argc, char **argv)
          {
             printf("[struct stat=\"ERROR\", msg=\"No input JSON file argument.\"]\n");
             fflush(stdout);
+            /////////////////////////////////////////////////////////////////////////
+            DLIO_PROFILER_C_FINI();
             exit(0);
          }
 
@@ -121,6 +133,8 @@ int main(int argc, char **argv)
          {
             printf("[struct stat=\"ERROR\", msg=\"No alternate font file argument.\"]\n");
             fflush(stdout);
+            /////////////////////////////////////////////////////////////////////////
+            DLIO_PROFILER_C_FINI();
             exit(0);
          }
 
@@ -142,11 +156,15 @@ int main(int argc, char **argv)
       if(returnStruct->status == 1)
       {
          printf("[struct stat=\"ERROR\", msg=\"%s\"]\n", returnStruct->msg);
+         /////////////////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FINI();
          exit(1);
       }
       else
       {
          printf("[struct stat=\"OK\", module=\"mViewer\", %s]\n", returnStruct->msg);
+         /////////////////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FINI();
          exit(0);
       }
    }
@@ -163,6 +181,8 @@ int main(int argc, char **argv)
       if(fin == (FILE *)NULL)
       {
          printf("[struct stat=\"ERROR\", msg=\"Failed to open JSON file.\"]\n");
+         /////////////////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FINI();
          exit(1);
       }
       
@@ -201,12 +221,16 @@ int main(int argc, char **argv)
       {
          printf("[struct stat=\"ERROR\", msg=\"%s\"]\n", returnStruct->msg);
          fflush(stdout);
+         /////////////////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FINI();
          exit(1);
       }
       else
       {
          printf("[struct stat=\"OK\", module=\"mViewer\", %s]\n", returnStruct->msg);
          fflush(stdout);
+         /////////////////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FINI();
          exit(0);
       }
    }
@@ -240,11 +264,15 @@ int main(int argc, char **argv)
    if(returnStruct->status == 1)
    {
       printf("[struct stat=\"ERROR\", msg=\"%s\"]\n", returnStruct->msg);
+      /////////////////////////////////////////////////////////////////////////
+      DLIO_PROFILER_C_FINI();
       exit(1);
    }
    else
    {
       printf("[struct stat=\"OK\", module=\"mViewer\", %s]\n", returnStruct->msg);
+      /////////////////////////////////////////////////////////////////////////
+      DLIO_PROFILER_C_FINI();
       exit(0);
    }
 }

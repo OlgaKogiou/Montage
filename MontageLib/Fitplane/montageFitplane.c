@@ -42,6 +42,8 @@ Version  Developer        Date     Change
 #include <mFitplane.h>
 #include <montage.h>
 
+#include <dlio_profiler/dlio_profiler.h>
+
 #define MAXSTR  256
 
 #define SWAP(a,b) {temp=(a);(a)=(b);(b)=temp;}
@@ -77,8 +79,10 @@ static char montage_json  [1024];
 /*                                                                       */
 /*************************************************************************/
 
+
 struct mFitplaneReturn *mFitplane(char *input_file, int nofit, int levelOnly, int border, int debug)
 {
+   DLIO_PROFILER_C_FUNCTION_START();
    fitsfile *fptr;
    int       i, j, nfound;
    int       nullcnt;
@@ -731,7 +735,7 @@ struct mFitplaneReturn *mFitplane(char *input_file, int nofit, int levelOnly, in
 
    free(b);
 
-
+   DLIO_PROFILER_C_FUNCTION_END();
    return returnStruct;
 }
 

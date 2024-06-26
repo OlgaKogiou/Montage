@@ -7,6 +7,8 @@
 #include <mProject.h>
 #include <montage.h>
 
+#include <dlio_profiler/dlio_profiler.h>
+
 #define MAXSTR 256
 
 extern char *optarg;
@@ -16,7 +18,8 @@ extern int getopt(int argc, char *const *argv, const char *options);
 
 
 int main(int argc, char **argv)
-{
+{  /////////////////////////////////////////////
+   DLIO_PROFILER_C_INIT(NULL, NULL, NULL);
    int       c, hdu, expand;
    int       debug, fullRegion, energyMode;
 
@@ -181,6 +184,10 @@ int main(int argc, char **argv)
    returnStruct = mProject(input_file, output_file, template_file, 
                            hdu, weight_file, fixedWeight, threshold, borderstr, 
                            drizzle, fluxScale, energyMode, expand, fullRegion, debug);
+
+
+   /////////////////////////////////////////////////////////////////////////
+   DLIO_PROFILER_C_FINI();
 
   if(returnStruct->status == 1)
    {

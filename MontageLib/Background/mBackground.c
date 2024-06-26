@@ -10,11 +10,17 @@
 #include <mBackground.h>
 #include <montage.h>
 
+#include <dlio_profiler/dlio_profiler.h>
+
 #define MAXSTR  256
 
 
 int main(int argc, char **argv)
 {
+   /////////////////////////////////////////////
+   DLIO_PROFILER_C_INIT(NULL, NULL, NULL);
+
+
    int       debug, noAreas, i;
    int       tableDriven, haveStatus;
    int       icntr, ifname, cntr;
@@ -56,6 +62,8 @@ int main(int argc, char **argv)
          if(i+1 >= argc)
          {
             printf("[struct stat=\"ERROR\", msg=\"No status file name given\"]\n");
+            /////////////////////////////////////////////////////////////////////////
+   DLIO_PROFILER_C_FINI();
             exit(1);
          }
 
@@ -63,6 +71,8 @@ int main(int argc, char **argv)
          {
             printf ("[struct stat=\"ERROR\", msg=\"Cannot open status file: %s\"]\n",
                argv[i+1]);
+               /////////////////////////////////////////////////////////////////////////
+   DLIO_PROFILER_C_FINI();
             exit(1);
          }
 
@@ -88,12 +98,16 @@ int main(int argc, char **argv)
          if(end - argv[i+1] < strlen(argv[i+1]))
          {
             printf("[struct stat=\"ERROR\", msg=\"Debug level string is invalid: '%s'\"]\n", argv[i+1]);
+            /////////////////////////////////////////////////////////////////////////
+   DLIO_PROFILER_C_FINI();
             exit(1);
          }
 
          if(debug < 0)
          {
             printf("[struct stat=\"ERROR\", msg=\"Debug level value cannot be negative\"]\n");
+            /////////////////////////////////////////////////////////////////////////
+   DLIO_PROFILER_C_FINI();
             exit(1);
          }
 
@@ -128,6 +142,8 @@ int main(int argc, char **argv)
    if (argc < 5) 
    {
       printf ("[struct stat=\"ERROR\", msg=\"Usage: mBackground [-d level] [-n(o-areas)] [-s statusfile] in.fits out.fits A B C | mBackground [-t(able-mode)] [-d level] [-n(o-areas)] [-s statusfile] in.fits out.fits images.tbl corrfile.tbl\"]\n");
+      /////////////////////////////////////////////////////////////////////////
+   DLIO_PROFILER_C_FINI();
       exit(1);
    }
 
@@ -136,6 +152,8 @@ int main(int argc, char **argv)
    if(input_file[0] == '-')
    {
       printf ("[struct stat=\"ERROR\", msg=\"Invalid input file '%s'\"]\n", input_file);
+      /////////////////////////////////////////////////////////////////////////
+   DLIO_PROFILER_C_FINI();
       exit(1);
    }
 
@@ -144,6 +162,8 @@ int main(int argc, char **argv)
    if(output_file[0] == '-')
    {
       printf ("[struct stat=\"ERROR\", msg=\"Invalid output file '%s'\"]\n", output_file);
+      /////////////////////////////////////////////////////////////////////////
+   DLIO_PROFILER_C_FINI();
       exit(1);
    }
 
@@ -156,6 +176,8 @@ int main(int argc, char **argv)
       if (argc != 6) 
       {
          printf ("[struct stat=\"ERROR\", msg=\"Usage: mBackground [-d level] [-n(o-areas)] [-s statusfile] in.fits out.fits A B C | mBackground [-t](able-mode) [-d level] [-n(o-areas)] [-s statusfile] in.fits out.fits images.tbl corrfile.tbl\"]\n");
+         /////////////////////////////////////////////////////////////////////////
+   DLIO_PROFILER_C_FINI();
          exit(1);
       }
 
@@ -164,6 +186,8 @@ int main(int argc, char **argv)
       if(end < argv[3] + strlen(argv[3]))
       {
          printf ("[struct stat=\"ERROR\", msg=\"A coefficient string is not a number\"]\n");
+         /////////////////////////////////////////////////////////////////////////
+   DLIO_PROFILER_C_FINI();
          exit(1);
       }
 
@@ -172,6 +196,8 @@ int main(int argc, char **argv)
       if(end < argv[4] + strlen(argv[4]))
       {
          printf ("[struct stat=\"ERROR\", msg=\"B coefficient string is not a number\"]\n");
+         /////////////////////////////////////////////////////////////////////////
+   DLIO_PROFILER_C_FINI();
          exit(1);
       }
 
@@ -180,6 +206,8 @@ int main(int argc, char **argv)
       if(end < argv[5] + strlen(argv[5]))
       {
          printf ("[struct stat=\"ERROR\", msg=\"C coefficient string is not a number\"]\n");
+         /////////////////////////////////////////////////////////////////////////
+   DLIO_PROFILER_C_FINI();
          exit(1);
       }
    }
@@ -207,6 +235,8 @@ int main(int argc, char **argv)
       {
          fprintf(montage_status, "[struct stat=\"ERROR\", msg=\"Invalid image metadata file: %s\"]\n",
             tblfile);
+            /////////////////////////////////////////////////////////////////////////
+   DLIO_PROFILER_C_FINI();
          exit(1);
       }
 
@@ -220,6 +250,8 @@ int main(int argc, char **argv)
       || ifname < 0)
       {
          fprintf(montage_status, "[struct stat=\"ERROR\", msg=\"Image table needs columns cntr and fname\"]\n");
+         /////////////////////////////////////////////////////////////////////////
+   DLIO_PROFILER_C_FINI();
          exit(1);
       }
 
@@ -233,6 +265,8 @@ int main(int argc, char **argv)
          if(istat < 0)
          {
             fprintf(montage_status, "[struct stat=\"ERROR\", msg=\"Hit end of image table without finding file name\"]\n");
+            /////////////////////////////////////////////////////////////////////////
+            DLIO_PROFILER_C_FINI();
             exit(1);
          }
 
@@ -260,6 +294,8 @@ int main(int argc, char **argv)
       || ic       < 0)
       {
          fprintf(montage_status, "[struct stat=\"ERROR\", msg=\"Need columns: id,a,b,c in corrections file\"]\n");
+         /////////////////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FINI();
          exit(1);
       }
 
@@ -295,6 +331,9 @@ int main(int argc, char **argv)
    }
 
    returnStruct = mBackground(input_file, output_file, A, B, C, noAreas, debug);
+
+   /////////////////////////////////////////////////////////////////////////
+   DLIO_PROFILER_C_FINI();
 
    if(returnStruct->status == 1)
    {

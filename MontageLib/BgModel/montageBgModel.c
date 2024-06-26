@@ -59,6 +59,8 @@ Version  Developer        Date     Change
 #include <mBgModel.h>
 #include <montage.h>
 
+#include <dlio_profiler/dlio_profiler.h>
+
 #define MAXSTR  256
 #define MAXCNT  128
 
@@ -243,6 +245,11 @@ static char montage_json  [1024];
 
 struct mBgModelReturn *mBgModel(char *imgfile, char *fitfile, char *corrtbl, char *gapdir, int mode, int useall, int niter, int debug)
 {
+
+   ///////////////////////////////////////////////////////////////////////////////
+   DLIO_PROFILER_C_FUNCTION_START();
+   DLIO_PROFILER_C_FUNCTION_UPDATE_STR("imgfile", imgfile);
+
    int     i, j, k, found, index, stat, iimg=0;
    int     ntoggle, toggle, nancnt;
    int     ncols, iteration, istatus;
@@ -607,6 +614,8 @@ of applying the right tranforms to the planes associated with each iteration.
    if(fout == (FILE *)NULL)
    {
       sprintf(returnStruct->msg, "Failed to open output %s", corrtbl);
+      ////////////////////////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -620,6 +629,8 @@ of applying the right tranforms to the planes associated with each iteration.
    if(ncols <= 0)
    {
       sprintf(returnStruct->msg, "Invalid image metadata file: %s", imgfile);
+      ////////////////////////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -659,6 +670,8 @@ of applying the right tranforms to the planes associated with each iteration.
          tclose();
 
          sprintf(returnStruct->msg, "Need columns: cntr and fname in image info file (LEVEL_ONLY mode).");
+         ////////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
          return returnStruct;
       }
    }
@@ -674,6 +687,8 @@ of applying the right tranforms to the planes associated with each iteration.
          tclose();
 
          sprintf(returnStruct->msg, "Need columns: cntr, fname, nl, ns, crpix1 and crpix2 in image info file.");
+         ////////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
          return returnStruct;
       }
    }
@@ -698,6 +713,8 @@ of applying the right tranforms to the planes associated with each iteration.
    if(imgs == (struct ImgInfo *)NULL)
    {
       sprintf(returnStruct->msg, "malloc() failed (ImgInfo)");
+      ////////////////////////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -752,6 +769,8 @@ of applying the right tranforms to the planes associated with each iteration.
          if(imgs == (struct ImgInfo *)NULL)
          {
             sprintf(returnStruct->msg, "realloc() failed (ImgInfo) [1]");
+            ////////////////////////////////////////////////////////////////
+            DLIO_PROFILER_C_FUNCTION_END();
             return returnStruct;
          }
       }
@@ -781,6 +800,8 @@ of applying the right tranforms to the planes associated with each iteration.
    if(ncols <= 0)
    {
       sprintf(returnStruct->msg, "Invalid background fit parameters file: %s", fitfile);
+      ////////////////////////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -829,6 +850,8 @@ of applying the right tranforms to the planes associated with each iteration.
    {
       tclose();
       sprintf(returnStruct->msg, "Need columns: plus minus a b c crpix1 crpix2 xmin xmax ymin ymax xcenter ycenter npixel rms boxx boxy boxwidth boxheight boxang");
+      ////////////////////////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -853,6 +876,8 @@ of applying the right tranforms to the planes associated with each iteration.
    if(fits == (struct FitInfo *)NULL)
    {
       sprintf(returnStruct->msg, "malloc() failed (FitInfo)");
+      ////////////////////////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -1003,6 +1028,8 @@ of applying the right tranforms to the planes associated with each iteration.
          if(fits == (struct FitInfo *)NULL)
          {
             sprintf(returnStruct->msg, "realloc() failed (FitInfo) [%lu] [3]", maxfits * sizeof(struct FitInfo));
+            ////////////////////////////////////////////////////////////////
+            DLIO_PROFILER_C_FUNCTION_END();
             return returnStruct;
          }
       }
@@ -1043,6 +1070,8 @@ of applying the right tranforms to the planes associated with each iteration.
       if(ifname < 0)
       {
          strcpy(returnStruct->msg, "gap.tbl file in gap directory does not have 'file' column.");
+         ////////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
          return returnStruct;
       }
 
@@ -1068,6 +1097,8 @@ of applying the right tranforms to the planes associated with each iteration.
             tclose();
 
             sprintf(returnStruct->msg, "Cannot open gap file.");
+            ////////////////////////////////////////////////////////////////
+            DLIO_PROFILER_C_FUNCTION_END();
             return returnStruct;
          }
 
@@ -1184,6 +1215,8 @@ of applying the right tranforms to the planes associated with each iteration.
             if(fits == (struct FitInfo *)NULL)
             {
                sprintf(returnStruct->msg, "realloc() failed (FitInfo) [%lu] [2]", maxfits * sizeof(struct FitInfo));
+               ////////////////////////////////////////////////////////////////
+               DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
 
             }
@@ -1300,6 +1333,8 @@ of applying the right tranforms to the planes associated with each iteration.
             if(fits == (struct FitInfo *)NULL)
             {
                sprintf(returnStruct->msg, "realloc() failed (FitInfo) [%lu] [2]", maxfits * sizeof(struct FitInfo));
+               ////////////////////////////////////////////////////////////////
+               DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
 
             }
@@ -1325,6 +1360,8 @@ of applying the right tranforms to the planes associated with each iteration.
       if(ncols < 1)
       {
          strcpy(returnStruct->msg, "Cannot open wraps.tbl file in gap directory.");
+         ////////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
          return returnStruct;
       }
 
@@ -1333,6 +1370,8 @@ of applying the right tranforms to the planes associated with each iteration.
       if(iplus < 0 || iminus < 0)
       {
          strcpy(returnStruct->msg, "wrap.tbl file in gap directory does not have 'plus' and 'minus' columns.");
+         ////////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
          return returnStruct;
       }
 
@@ -1429,6 +1468,8 @@ of applying the right tranforms to the planes associated with each iteration.
             if(fits == (struct FitInfo *)NULL)
             {
                sprintf(returnStruct->msg, "realloc() failed (FitInfo) [%lu] [2]", maxfits * sizeof(struct FitInfo));
+               ////////////////////////////////////////////////////////////////
+               DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
 
             }
@@ -1479,6 +1520,8 @@ of applying the right tranforms to the planes associated with each iteration.
             if(fits == (struct FitInfo *)NULL)
             {
                sprintf(returnStruct->msg, "realloc() failed (FitInfo) [%lu] [2]", maxfits * sizeof(struct FitInfo));
+               ////////////////////////////////////////////////////////////////
+               DLIO_PROFILER_C_FUNCTION_END();
                return returnStruct;
 
             }
@@ -1560,6 +1603,8 @@ of applying the right tranforms to the planes associated with each iteration.
    if(corrs == (struct CorrInfo *)NULL)
    {
       sprintf(returnStruct->msg, "malloc() failed (CorrInfo)");
+      ////////////////////////////////////////////////////////////////
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -1588,6 +1633,8 @@ of applying the right tranforms to the planes associated with each iteration.
       if(corrs[i].neighbors == (struct FitInfo **)NULL)
       {
          sprintf(returnStruct->msg, "malloc() failed (FitInfo *)");
+         ////////////////////////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
          return returnStruct;
       }
    }
@@ -1658,6 +1705,8 @@ of applying the right tranforms to the planes associated with each iteration.
                if(corrs[i].neighbors == (struct FitInfo **)NULL)
                {
                   sprintf(returnStruct->msg, "malloc() failed (FitInfo *)");
+                  ////////////////////////////////////////////////////////////////
+                  DLIO_PROFILER_C_FUNCTION_END();
                   return returnStruct;
                }
             }
@@ -1705,6 +1754,8 @@ of applying the right tranforms to the planes associated with each iteration.
          if(corrs[index].neighbors == (struct FitInfo **)NULL)
          {
             sprintf(returnStruct->msg, "realloc() failed (FitInfo *) [5]");
+            ////////////////////////////////////////////////////////////////
+            DLIO_PROFILER_C_FUNCTION_END();
             return returnStruct;
          }
       }
@@ -2165,6 +2216,8 @@ of applying the right tranforms to the planes associated with each iteration.
          else
          {
             sprintf(returnStruct->msg, "Invalid fit type");
+            ////////////////////////////////////////////////////////////////
+            DLIO_PROFILER_C_FUNCTION_END();
             return returnStruct;
          }
 
@@ -2543,6 +2596,8 @@ of applying the right tranforms to the planes associated with each iteration.
 
    returnStruct->nnan = nancnt;
 
+   ////////////////////////////////////////////////////////////////
+   DLIO_PROFILER_C_FUNCTION_END();
    return returnStruct;
 }
 

@@ -87,6 +87,8 @@ Version  Developer        Date     Change
 #include <montage.h>
 #include <mImgtbl.h>
 
+#include <dlio_profiler/dlio_profiler.h>
+
 #define MAXLEN 100000
 #define MAXSTR 1024
 
@@ -193,6 +195,10 @@ struct mImgtblReturn *mImgtbl(char *pathnamein, char *tblname,
                               int showCornersin, int showinfo, int showbadin, char *imgListFile, char *fieldListFile,
                               int debugin)
 {
+   ///////////////////////////////////////////////////////////////////////////////
+   DLIO_PROFILER_C_FUNCTION_START();
+   DLIO_PROFILER_C_FUNCTION_UPDATE_STR("pathnamein", pathnamein);
+   
    int   i, istat, ncols, ifname;
 
    char  pathname [1024];
@@ -263,6 +269,8 @@ struct mImgtblReturn *mImgtbl(char *pathnamein, char *tblname,
       if((ffields = fopen(fieldListFile, "r")) == (FILE *)NULL)
       {
          sprintf(returnStruct->msg, "Cannot open field list file: %s", fieldListFile);
+         ///////////////////////////////////////////////
+         DLIO_PROFILER_C_FUNCTION_END();
          return returnStruct;
       }
 
@@ -329,6 +337,8 @@ struct mImgtblReturn *mImgtbl(char *pathnamein, char *tblname,
          {
             free(fields);
             sprintf(returnStruct->msg, "Illegal field name (line %d)", nfields);
+            ///////////////////////////////////////////////
+            DLIO_PROFILER_C_FUNCTION_END();
             return returnStruct;
          }
 
@@ -336,6 +346,8 @@ struct mImgtblReturn *mImgtbl(char *pathnamein, char *tblname,
          {
             free(fields);
             sprintf(returnStruct->msg, "Illegal field type (line %d)", nfields);
+            ///////////////////////////////////////////////
+            DLIO_PROFILER_C_FUNCTION_END();
             return returnStruct;
          }
 
@@ -401,12 +413,16 @@ struct mImgtblReturn *mImgtbl(char *pathnamein, char *tblname,
    if(istat < 0)
    {
       sprintf(returnStruct->msg, "Cannot access %s", pathname);
+      ///////////////////////////////////////////////
+            DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
    else if (S_ISDIR(type.st_mode) != 1)
    {
       sprintf(returnStruct->msg, "%s is not a directory", pathname);
+      ///////////////////////////////////////////////
+            DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -429,6 +445,8 @@ struct mImgtblReturn *mImgtbl(char *pathnamein, char *tblname,
    if(tblf == (FILE *)NULL)
    {
        sprintf(returnStruct->msg, "Can't open output table.");
+       ///////////////////////////////////////////////
+            DLIO_PROFILER_C_FUNCTION_END();
        return returnStruct;
    }
 
@@ -444,6 +462,8 @@ struct mImgtblReturn *mImgtbl(char *pathnamein, char *tblname,
       if(ncols < 1)
       {
          sprintf(returnStruct->msg, "Cannot open image list file: %s", imgListFile);
+         ///////////////////////////////////////////////
+            DLIO_PROFILER_C_FUNCTION_END();
          return returnStruct;
       }
 
@@ -455,12 +475,16 @@ struct mImgtblReturn *mImgtbl(char *pathnamein, char *tblname,
       if(ifname < 0)
       {
          sprintf(returnStruct->msg, "Image table needs column fname/file");
+         ///////////////////////////////////////////////
+            DLIO_PROFILER_C_FUNCTION_END();
          return returnStruct;
       }
 
       if(mImgtbl_get_list(pathname, ifname) > 0)
       {
          strcpy(returnStruct->msg, montage_msgstr);
+         ///////////////////////////////////////////////
+            DLIO_PROFILER_C_FUNCTION_END();
          return returnStruct;
       }
    }
@@ -469,6 +493,8 @@ struct mImgtblReturn *mImgtbl(char *pathnamein, char *tblname,
       if(mImgtbl_get_files(pathname) > 0)
       {
          strcpy(returnStruct->msg, montage_msgstr);
+         ///////////////////////////////////////////////
+            DLIO_PROFILER_C_FUNCTION_END();
          return returnStruct;
       }
    }
@@ -479,6 +505,8 @@ struct mImgtblReturn *mImgtbl(char *pathnamein, char *tblname,
    if(mImgtbl_update_table(tblname) > 0)
    {
       strcpy(returnStruct->msg, montage_msgstr);
+      ///////////////////////////////////////////////
+            DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -496,6 +524,8 @@ struct mImgtblReturn *mImgtbl(char *pathnamein, char *tblname,
    returnStruct->badfits = badfile;
    returnStruct->badwcs  = badwcs;
 
+   ///////////////////////////////////////////////
+   DLIO_PROFILER_C_FUNCTION_END();
    return returnStruct;
 }
 

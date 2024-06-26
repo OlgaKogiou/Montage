@@ -1,0 +1,1309 @@
+mkdir -p bin
+mkdir -p lib/include
+test ! -d lib/src    || (cd lib/src    && make)
+make[1]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/lib/src'
+(cd bzip2-1.0.6 && make && cp libbz2.a ../.. && cp bzlib.h ../../include)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/lib/src/bzip2-1.0.6'
+
+Doing 6 tests (3 compress, 3 uncompress) ...
+If there's a problem, things might stop at this point.
+ 
+./bzip2 -1  < sample1.ref > sample1.rb2
+./bzip2 -2  < sample2.ref > sample2.rb2
+./bzip2 -3  < sample3.ref > sample3.rb2
+./bzip2 -d  < sample1.bz2 > sample1.tst
+./bzip2 -d  < sample2.bz2 > sample2.tst
+./bzip2 -ds < sample3.bz2 > sample3.tst
+cmp sample1.bz2 sample1.rb2 
+cmp sample2.bz2 sample2.rb2
+cmp sample3.bz2 sample3.rb2
+cmp sample1.tst sample1.ref
+cmp sample2.tst sample2.ref
+cmp sample3.tst sample3.ref
+
+If you got this far and the 'cmp's didn't complain, it looks
+like you're in business.  
+
+To install in /usr/local/bin, /usr/local/lib, /usr/local/man and 
+/usr/local/include, type
+
+   make install
+
+To install somewhere else, eg, /xxx/yyy/{bin,lib,man,include}, type 
+
+   make install PREFIX=/xxx/yyy
+
+If you are (justifiably) paranoid and want to see what 'make install'
+is going to do, you can first do
+
+   make -n install                      or
+   make -n install PREFIX=/xxx/yyy      respectively.
+
+The -n instructs make to show the commands it would execute, but
+not actually execute them.
+
+Instructions for use are in the preformatted manual page, in the file
+bzip2.txt.  For more detailed documentation, read the full manual.  
+It is available in Postscript form (manual.ps), PDF form (manual.pdf),
+and HTML form (manual.html).
+
+You can also do "bzip2 --help" to see some helpful information. 
+"bzip2 -L" displays the software license.
+
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/lib/src/bzip2-1.0.6'
+(cd cfitsio-3.49 && ./configure --disable-curl && make && cp libcfitsio.a ../.. && cp *.h ../../include)
+checking build system type... x86_64-pc-linux-gnu
+checking host system type... x86_64-pc-linux-gnu
+checking target system type... x86_64-pc-linux-gnu
+checking for gcc... gcc
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether gcc accepts -g... yes
+checking for gcc option to accept ISO C89... none needed
+checking how to run the C preprocessor... gcc -E
+checking for grep that handles long lines and -e... /usr/bin/grep
+checking for egrep... /usr/bin/grep -E
+checking for ANSI C header files... yes
+checking for sys/types.h... yes
+checking for sys/stat.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for memory.h... yes
+checking for strings.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for unistd.h... yes
+checking for gcc... (cached) gcc
+checking whether we are using the GNU C compiler... (cached) yes
+checking whether gcc accepts -g... (cached) yes
+checking for gcc option to accept ISO C89... (cached) none needed
+checking for gfortran... gfortran
+checking whether we are using GNU Fortran... 
+yes
+cfitsio: == Adding wrapper support for GNU Fortran... 
+ done
+checking for ar... ar
+checking for ranlib... ranlib
+checking for stdlib.h... (cached) yes
+checking for string.h... (cached) yes
+checking math.h usability... yes
+checking math.h presence... yes
+checking for math.h... yes
+checking limits.h usability... yes
+checking limits.h presence... yes
+checking for limits.h... yes
+cfitsio: == Using gcc version 10
+checking whether ftruncate works... yes
+checking whether long long is defined... yes
+checking whether system V style IPC services are supported... yes
+checking whether flock_t is defined in sys/fcntl.h... no
+checking whether flock_t is defined in sys/flock.h... no
+checking whether union semun is defined... no
+checking for fmemopen... yes
+checking for library containing gethostbyname... none required
+checking for library containing connect... none required
+configure: creating ./config.status
+config.status: creating Makefile
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: creating cfitsio.pc
+
+    Congratulations, Makefile update was successful.
+    You may want to run "make" now.
+
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/lib/src/cfitsio-3.49'
+make[3]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/lib/src/cfitsio-3.49'
+make[3]: Nothing to be done for 'stand_alone'.
+make[3]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/lib/src/cfitsio-3.49'
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/lib/src/cfitsio-3.49'
+(cd cmd && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/lib/src/cmd'
+make[2]: 'libcmd.a' is up to date.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/lib/src/cmd'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/lib/src/cmd'
+cp libcmd.a ../..
+cp cmd.h ../../include
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/lib/src/cmd'
+(cd coord && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/lib/src/coord'
+make[2]: 'libcoord.a' is up to date.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/lib/src/coord'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/lib/src/coord'
+cp libcoord.a ../..
+cp coord.h ../../include
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/lib/src/coord'
+(cd mtbl && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/lib/src/mtbl'
+make[2]: 'libmtbl.a' is up to date.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/lib/src/mtbl'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/lib/src/mtbl'
+cp libmtbl.a ../..
+cp mtbl.h ../../include
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/lib/src/mtbl'
+(cd svc && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/lib/src/svc'
+make[2]: 'libsvc.a' is up to date.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/lib/src/svc'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/lib/src/svc'
+cp libsvc.a ../..
+cp svc.h ../../include
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/lib/src/svc'
+(cd json && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/lib/src/json'
+make[2]: 'libjson.a' is up to date.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/lib/src/json'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/lib/src/json'
+cp libjson.a ../..
+cp json.h ../../include
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/lib/src/json'
+(cd boundaries && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/lib/src/boundaries'
+make[2]: 'libboundaries.a' is up to date.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/lib/src/boundaries'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/lib/src/boundaries'
+cp libboundaries.a ../..
+cp boundaries.h ../../include
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/lib/src/boundaries'
+(cd pixbounds && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/lib/src/pixbounds'
+make[2]: 'libpixbounds.a' is up to date.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/lib/src/pixbounds'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/lib/src/pixbounds'
+cp libpixbounds.a ../..
+cp pixbounds.h ../../include
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/lib/src/pixbounds'
+(cd www && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/lib/src/www'
+make[2]: 'libwww.a' is up to date.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/lib/src/www'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/lib/src/www'
+cp libwww.a ../..
+cp www.h ../../include
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/lib/src/www'
+(cd wcssubs3.9.0_montage && make && cp libwcs.a ../.. && cp *.h ../../include)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/lib/src/wcssubs3.9.0_montage'
+make[2]: 'libwcs.a' is up to date.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/lib/src/wcssubs3.9.0_montage'
+(cd two_plane_v1.1 && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/lib/src/two_plane_v1.1'
+make[2]: 'libtwoplane.a' is up to date.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/lib/src/two_plane_v1.1'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/lib/src/two_plane_v1.1'
+cp libtwoplane.a ../..
+cp two_plane.h distort.h ../../include
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/lib/src/two_plane_v1.1'
+(cd lodepng_20140823 && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/lib/src/lodepng_20140823'
+make[2]: 'liblodepng.a' is up to date.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/lib/src/lodepng_20140823'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/lib/src/lodepng_20140823'
+cp liblodepng.a ../..
+cp lodepng.h ../../include
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/lib/src/lodepng_20140823'
+(cd jpeg-8b && ./configure --with-pic && make && cp .libs/libjpeg.a ../.. && cp jpeglib.h jconfig.h jmorecfg.h ../../include)
+checking build system type... x86_64-unknown-linux-gnu
+checking host system type... x86_64-unknown-linux-gnu
+checking target system type... x86_64-unknown-linux-gnu
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for a thread-safe mkdir -p... /usr/bin/mkdir -p
+checking for gawk... gawk
+checking whether make sets $(MAKE)... yes
+checking for style of include used by make... GNU
+checking for gcc... gcc
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether gcc accepts -g... yes
+checking for gcc option to accept ISO C89... none needed
+checking dependency style of gcc... gcc3
+checking for function prototypes... yes
+checking how to run the C preprocessor... gcc -E
+checking for grep that handles long lines and -e... /usr/bin/grep
+checking for egrep... /usr/bin/grep -E
+checking for ANSI C header files... yes
+checking for sys/types.h... yes
+checking for sys/stat.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for memory.h... yes
+checking for strings.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for unistd.h... yes
+checking for string.h... (cached) yes
+checking whether to enable maintainer-specific portions of Makefiles... no
+checking for gcc... (cached) gcc
+checking whether we are using the GNU C compiler... (cached) yes
+checking whether gcc accepts -g... (cached) yes
+checking for gcc option to accept ISO C89... (cached) none needed
+checking dependency style of gcc... (cached) gcc3
+checking for gcc option to accept ISO C99... none needed
+checking for gcc option to accept ISO Standard C... (cached) none needed
+checking how to run the C preprocessor... gcc -E
+checking whether make sets $(MAKE)... (cached) yes
+checking whether ln -s works... yes
+checking if LD -Wl,--version-script works... yes
+checking for function prototypes... yes
+checking stddef.h usability... yes
+checking stddef.h presence... yes
+checking for stddef.h... yes
+checking for stdlib.h... (cached) yes
+checking locale.h usability... yes
+checking locale.h presence... yes
+checking for locale.h... yes
+checking for string.h... (cached) yes
+checking for size_t... yes
+checking for type unsigned char... yes
+checking for type unsigned short... yes
+checking for type void... yes
+checking for an ANSI C-conforming const... yes
+checking for inline... __inline__
+checking for broken incomplete types... ok
+checking for short external names... ok
+checking to see if char is signed... yes
+checking to see if right shift is signed... yes
+checking to see if fopen accepts b spec... yes
+checking for a sed that does not truncate output... /usr/bin/sed
+checking for fgrep... /usr/bin/grep -F
+checking for ld used by gcc... /usr/bin/ld
+checking if the linker (/usr/bin/ld) is GNU ld... yes
+checking for BSD- or MS-compatible name lister (nm)... /usr/bin/nm -B
+checking the name lister (/usr/bin/nm -B) interface... BSD nm
+checking the maximum length of command line arguments... 3458764513820540925
+checking whether the shell understands some XSI constructs... yes
+checking whether the shell understands "+="... yes
+checking for /usr/bin/ld option to reload object files... -r
+checking for objdump... objdump
+checking how to recognize dependent libraries... pass_all
+checking for ar... ar
+checking for strip... strip
+checking for ranlib... ranlib
+checking command to parse /usr/bin/nm -B output from gcc object... ok
+checking for dlfcn.h... yes
+checking for objdir... .libs
+checking if gcc supports -fno-rtti -fno-exceptions... no
+checking for gcc option to produce PIC... -fPIC -DPIC
+checking if gcc PIC flag -fPIC -DPIC works... yes
+checking if gcc static flag -static works... yes
+checking if gcc supports -c -o file.o... yes
+checking if gcc supports -c -o file.o... (cached) yes
+checking whether the gcc linker (/usr/bin/ld -m elf_x86_64) supports shared libraries... yes
+checking whether -lc should be explicitly linked in... no
+checking dynamic linker characteristics... GNU/Linux ld.so
+checking how to hardcode library paths into programs... immediate
+checking whether stripping libraries is possible... yes
+checking if libtool supports shared libraries... yes
+checking whether to build shared libraries... yes
+checking whether to build static libraries... yes
+checking libjpeg version number... 8:2
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: creating jconfig.h
+config.status: jconfig.h is unchanged
+config.status: executing depfiles commands
+config.status: executing libtool commands
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/lib/src/jpeg-8b'
+make  all-am
+make[3]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/lib/src/jpeg-8b'
+make[3]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/lib/src/jpeg-8b'
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/lib/src/jpeg-8b'
+(cd freetype-2.9.1 && ./configure --prefix=`pwd`/../../freetype --without-png --without-zlib --without-bzip2 --without-harfbuzz && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/lib/src/freetype-2.9.1'
+
+FreeType build system -- automatic system detection
+
+The following settings are used:
+
+  platform                    unix
+  compiler                    cc
+  configuration directory     ./builds/unix
+  configuration rules         ./builds/unix/unix.mk
+
+If this does not correspond to your system or settings please remove the file
+`config.mk' from this directory then read the INSTALL file for help.
+
+Otherwise, simply type `make' again to build the library,
+or `make refdoc' to build the API reference (this needs python >= 2.6).
+
+cd builds/unix; \
+        ./configure  '--prefix=/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/../../freetype' '--without-png' '--without-zlib' '--without-bzip2' '--without-harfbuzz'
+checking build system type... x86_64-pc-linux-gnu
+checking host system type... x86_64-pc-linux-gnu
+checking for gcc... gcc
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether gcc accepts -g... yes
+checking for gcc option to accept ISO C89... none needed
+checking how to run the C preprocessor... gcc -E
+checking for pkg-config... /usr/bin/pkg-config
+checking pkg-config is at least version 0.24... yes
+checking how to print strings... printf
+checking for a sed that does not truncate output... /usr/bin/sed
+checking for grep that handles long lines and -e... /usr/bin/grep
+checking for egrep... /usr/bin/grep -E
+checking for fgrep... /usr/bin/grep -F
+checking for ld used by gcc... /usr/bin/ld
+checking if the linker (/usr/bin/ld) is GNU ld... yes
+checking for BSD- or MS-compatible name lister (nm)... /usr/bin/nm -B
+checking the name lister (/usr/bin/nm -B) interface... BSD nm
+checking whether ln -s works... yes
+checking the maximum length of command line arguments... 3458764513820540925
+checking how to convert x86_64-pc-linux-gnu file names to x86_64-pc-linux-gnu format... func_convert_file_noop
+checking how to convert x86_64-pc-linux-gnu file names to toolchain format... func_convert_file_noop
+checking for /usr/bin/ld option to reload object files... -r
+checking for objdump... objdump
+checking how to recognize dependent libraries... pass_all
+checking for dlltool... no
+checking how to associate runtime and link libraries... printf %s\n
+checking for ar... ar
+checking for archiver @FILE support... @
+checking for strip... strip
+checking for ranlib... ranlib
+checking for gawk... gawk
+checking command to parse /usr/bin/nm -B output from gcc object... ok
+checking for sysroot... no
+checking for a working dd... /usr/bin/dd
+checking how to truncate binary pipes... /usr/bin/dd bs=4096 count=1
+checking for mt... mt
+checking if mt is a manifest tool... no
+checking for ANSI C header files... yes
+checking for sys/types.h... yes
+checking for sys/stat.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for memory.h... yes
+checking for strings.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for unistd.h... yes
+checking for dlfcn.h... yes
+checking for objdir... .libs
+checking if gcc supports -fno-rtti -fno-exceptions... no
+checking for gcc option to produce PIC... -fPIC -DPIC
+checking if gcc PIC flag -fPIC -DPIC works... yes
+checking if gcc static flag -static works... yes
+checking if gcc supports -c -o file.o... yes
+checking if gcc supports -c -o file.o... (cached) yes
+checking whether the gcc linker (/usr/bin/ld -m elf_x86_64) supports shared libraries... yes
+checking whether -lc should be explicitly linked in... no
+checking dynamic linker characteristics... GNU/Linux ld.so
+checking how to hardcode library paths into programs... immediate
+checking whether stripping libraries is possible... yes
+checking if libtool supports shared libraries... yes
+checking whether to build shared libraries... yes
+checking whether to build static libraries... yes
+checking for windres... no
+checking for a BSD-compatible install... /usr/bin/install -c
+checking for a thread-safe mkdir -p... /usr/bin/mkdir -p
+checking for ANSI C header files... (cached) yes
+checking fcntl.h usability... yes
+checking fcntl.h presence... yes
+checking for fcntl.h... yes
+checking for unistd.h... (cached) yes
+checking for an ANSI C-conforming const... yes
+checking size of int... 4
+checking size of long... 8
+checking for unsigned long long int... yes
+checking for long long int... yes
+checking whether cpp computation of bit length in ftconfig.in works... yes
+checking for special C compiler options needed for large files... no
+checking for _FILE_OFFSET_BITS value needed for large files... no
+checking for stdlib.h... (cached) yes
+checking for unistd.h... (cached) yes
+checking for sys/param.h... yes
+checking for getpagesize... yes
+checking for working mmap... yes
+checking whether munmap is declared... yes
+checking for munmap's first parameter type... void *
+checking for memcpy... yes
+checking for memmove... yes
+checking gcc compiler flag -pedantic to assure ANSI C works correctly... ok, adding to XX_ANSIFLAGS
+checking gcc compiler flag -ansi to assure ANSI C works correctly... ok, adding to XX_ANSIFLAGS
+checking for -fvisibility=hidden compiler flag... yes
+checking for library containing clock_gettime... none required
+configure: creating ./config.status
+config.status: creating ftoption.h
+config.status: creating unix-cc.mk
+config.status: creating unix-def.mk
+config.status: creating ftconfig.h
+config.status: executing libtool commands
+configure:
+
+Library configuration:
+  external zlib: no
+  bzip2:         no
+  libpng:        no
+  harfbuzz:      no
+
+make[2]: Nothing to be done for 'unix'.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/lib/src/freetype-2.9.1'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/lib/src/freetype-2.9.1'
+./builds/unix/libtool --mode=compile gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include  -c -Wall -g -O2 -fvisibility=hidden -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT2_BUILD_LIBRARY -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftsystem.lo builds/unix/ftsystem.c
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" builds/unix/ftsystem.c  -fPIC -DPIC -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/ftsystem.o
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" builds/unix/ftsystem.c -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftsystem.o >/dev/null 2>&1
+./builds/unix/libtool --mode=compile gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include  -c -Wall -g -O2 -fvisibility=hidden -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT2_BUILD_LIBRARY -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftdebug.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base/ftdebug.c
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base/ftdebug.c  -fPIC -DPIC -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/ftdebug.o
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base/ftdebug.c -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftdebug.o >/dev/null 2>&1
+./builds/unix/libtool --mode=compile gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include  -c -Wall -g -O2 -fvisibility=hidden -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT2_BUILD_LIBRARY -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftinit.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base/ftinit.c
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base/ftinit.c  -fPIC -DPIC -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/ftinit.o
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base/ftinit.c -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftinit.o >/dev/null 2>&1
+./builds/unix/libtool --mode=compile gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include  -c -Wall -g -O2 -fvisibility=hidden -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT2_BUILD_LIBRARY -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftbase.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base/ftbase.c
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base/ftbase.c  -fPIC -DPIC -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/ftbase.o
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base/ftbase.c -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftbase.o >/dev/null 2>&1
+./builds/unix/libtool --mode=compile gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include  -c -Wall -g -O2 -fvisibility=hidden -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT2_BUILD_LIBRARY -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftbbox.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base/ftbbox.c
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base/ftbbox.c  -fPIC -DPIC -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/ftbbox.o
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base/ftbbox.c -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftbbox.o >/dev/null 2>&1
+./builds/unix/libtool --mode=compile gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include  -c -Wall -g -O2 -fvisibility=hidden -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT2_BUILD_LIBRARY -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftbdf.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base/ftbdf.c
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base/ftbdf.c  -fPIC -DPIC -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/ftbdf.o
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base/ftbdf.c -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftbdf.o >/dev/null 2>&1
+./builds/unix/libtool --mode=compile gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include  -c -Wall -g -O2 -fvisibility=hidden -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT2_BUILD_LIBRARY -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftbitmap.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base/ftbitmap.c
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base/ftbitmap.c  -fPIC -DPIC -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/ftbitmap.o
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base/ftbitmap.c -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftbitmap.o >/dev/null 2>&1
+./builds/unix/libtool --mode=compile gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include  -c -Wall -g -O2 -fvisibility=hidden -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT2_BUILD_LIBRARY -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftcid.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base/ftcid.c
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base/ftcid.c  -fPIC -DPIC -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/ftcid.o
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base/ftcid.c -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftcid.o >/dev/null 2>&1
+./builds/unix/libtool --mode=compile gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include  -c -Wall -g -O2 -fvisibility=hidden -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT2_BUILD_LIBRARY -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftfstype.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base/ftfstype.c
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base/ftfstype.c  -fPIC -DPIC -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/ftfstype.o
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base/ftfstype.c -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftfstype.o >/dev/null 2>&1
+./builds/unix/libtool --mode=compile gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include  -c -Wall -g -O2 -fvisibility=hidden -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT2_BUILD_LIBRARY -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftgasp.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base/ftgasp.c
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base/ftgasp.c  -fPIC -DPIC -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/ftgasp.o
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base/ftgasp.c -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftgasp.o >/dev/null 2>&1
+./builds/unix/libtool --mode=compile gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include  -c -Wall -g -O2 -fvisibility=hidden -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT2_BUILD_LIBRARY -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftglyph.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base/ftglyph.c
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base/ftglyph.c  -fPIC -DPIC -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/ftglyph.o
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base/ftglyph.c -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftglyph.o >/dev/null 2>&1
+./builds/unix/libtool --mode=compile gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include  -c -Wall -g -O2 -fvisibility=hidden -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT2_BUILD_LIBRARY -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftgxval.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base/ftgxval.c
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base/ftgxval.c  -fPIC -DPIC -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/ftgxval.o
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base/ftgxval.c -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftgxval.o >/dev/null 2>&1
+./builds/unix/libtool --mode=compile gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include  -c -Wall -g -O2 -fvisibility=hidden -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT2_BUILD_LIBRARY -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftmm.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base/ftmm.c
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base/ftmm.c  -fPIC -DPIC -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/ftmm.o
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base/ftmm.c -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftmm.o >/dev/null 2>&1
+./builds/unix/libtool --mode=compile gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include  -c -Wall -g -O2 -fvisibility=hidden -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT2_BUILD_LIBRARY -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftotval.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base/ftotval.c
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base/ftotval.c  -fPIC -DPIC -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/ftotval.o
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base/ftotval.c -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftotval.o >/dev/null 2>&1
+./builds/unix/libtool --mode=compile gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include  -c -Wall -g -O2 -fvisibility=hidden -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT2_BUILD_LIBRARY -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftpatent.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base/ftpatent.c
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base/ftpatent.c  -fPIC -DPIC -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/ftpatent.o
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base/ftpatent.c -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftpatent.o >/dev/null 2>&1
+./builds/unix/libtool --mode=compile gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include  -c -Wall -g -O2 -fvisibility=hidden -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT2_BUILD_LIBRARY -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftpfr.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base/ftpfr.c
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base/ftpfr.c  -fPIC -DPIC -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/ftpfr.o
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base/ftpfr.c -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftpfr.o >/dev/null 2>&1
+./builds/unix/libtool --mode=compile gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include  -c -Wall -g -O2 -fvisibility=hidden -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT2_BUILD_LIBRARY -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftstroke.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base/ftstroke.c
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base/ftstroke.c  -fPIC -DPIC -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/ftstroke.o
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base/ftstroke.c -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftstroke.o >/dev/null 2>&1
+./builds/unix/libtool --mode=compile gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include  -c -Wall -g -O2 -fvisibility=hidden -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT2_BUILD_LIBRARY -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftsynth.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base/ftsynth.c
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base/ftsynth.c  -fPIC -DPIC -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/ftsynth.o
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base/ftsynth.c -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftsynth.o >/dev/null 2>&1
+./builds/unix/libtool --mode=compile gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include  -c -Wall -g -O2 -fvisibility=hidden -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT2_BUILD_LIBRARY -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/fttype1.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base/fttype1.c
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base/fttype1.c  -fPIC -DPIC -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/fttype1.o
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base/fttype1.c -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/fttype1.o >/dev/null 2>&1
+./builds/unix/libtool --mode=compile gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include  -c -Wall -g -O2 -fvisibility=hidden -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT2_BUILD_LIBRARY -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftwinfnt.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base/ftwinfnt.c
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base/ftwinfnt.c  -fPIC -DPIC -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/ftwinfnt.o
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/base/ftwinfnt.c -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftwinfnt.o >/dev/null 2>&1
+./builds/unix/libtool --mode=compile gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/truetype -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include  -c -Wall -g -O2 -fvisibility=hidden -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT2_BUILD_LIBRARY -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/truetype.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/truetype/truetype.c
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/truetype -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/truetype/truetype.c  -fPIC -DPIC -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/truetype.o
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/truetype -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/truetype/truetype.c -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/truetype.o >/dev/null 2>&1
+./builds/unix/libtool --mode=compile gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/type1 -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include  -c -Wall -g -O2 -fvisibility=hidden -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT2_BUILD_LIBRARY -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/type1.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/type1/type1.c
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/type1 -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/type1/type1.c  -fPIC -DPIC -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/type1.o
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/type1 -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/type1/type1.c -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/type1.o >/dev/null 2>&1
+./builds/unix/libtool --mode=compile gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/cff -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include  -c -Wall -g -O2 -fvisibility=hidden -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT2_BUILD_LIBRARY -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/cff.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/cff/cff.c
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/cff -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/cff/cff.c  -fPIC -DPIC -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/cff.o
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/cff -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/cff/cff.c -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/cff.o >/dev/null 2>&1
+./builds/unix/libtool --mode=compile gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/cid -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include  -c -Wall -g -O2 -fvisibility=hidden -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT2_BUILD_LIBRARY -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/type1cid.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/cid/type1cid.c
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/cid -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/cid/type1cid.c  -fPIC -DPIC -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/type1cid.o
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/cid -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/cid/type1cid.c -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/type1cid.o >/dev/null 2>&1
+./builds/unix/libtool --mode=compile gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/pfr -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include  -c -Wall -g -O2 -fvisibility=hidden -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT2_BUILD_LIBRARY -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/pfr.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/pfr/pfr.c
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/pfr -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/pfr/pfr.c  -fPIC -DPIC -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/pfr.o
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/pfr -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/pfr/pfr.c -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/pfr.o >/dev/null 2>&1
+./builds/unix/libtool --mode=compile gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/type42 -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include  -c -Wall -g -O2 -fvisibility=hidden -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT2_BUILD_LIBRARY -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/type42.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/type42/type42.c
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/type42 -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/type42/type42.c  -fPIC -DPIC -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/type42.o
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/type42 -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/type42/type42.c -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/type42.o >/dev/null 2>&1
+./builds/unix/libtool --mode=compile gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/winfonts -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include  -c -Wall -g -O2 -fvisibility=hidden -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT2_BUILD_LIBRARY -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/winfnt.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/winfonts/winfnt.c
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/winfonts -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/winfonts/winfnt.c  -fPIC -DPIC -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/winfnt.o
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/winfonts -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/winfonts/winfnt.c -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/winfnt.o >/dev/null 2>&1
+./builds/unix/libtool --mode=compile gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/pcf -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include  -c -Wall -g -O2 -fvisibility=hidden -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT2_BUILD_LIBRARY -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/pcf.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/pcf/pcf.c
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/pcf -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/pcf/pcf.c  -fPIC -DPIC -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/pcf.o
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/pcf -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/pcf/pcf.c -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/pcf.o >/dev/null 2>&1
+./builds/unix/libtool --mode=compile gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/bdf -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include  -c -Wall -g -O2 -fvisibility=hidden -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT2_BUILD_LIBRARY -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/bdf.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/bdf/bdf.c
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/bdf -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/bdf/bdf.c  -fPIC -DPIC -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/bdf.o
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/bdf -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/bdf/bdf.c -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/bdf.o >/dev/null 2>&1
+./builds/unix/libtool --mode=compile gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/sfnt -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include  -c -Wall -g -O2 -fvisibility=hidden -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT2_BUILD_LIBRARY -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/sfnt.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/sfnt/sfnt.c
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/sfnt -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/sfnt/sfnt.c  -fPIC -DPIC -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/sfnt.o
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/sfnt -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/sfnt/sfnt.c -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/sfnt.o >/dev/null 2>&1
+./builds/unix/libtool --mode=compile gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/autofit -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include  -c -Wall -g -O2 -fvisibility=hidden -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT2_BUILD_LIBRARY -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/autofit.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/autofit/autofit.c
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/autofit -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/autofit/autofit.c  -fPIC -DPIC -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/autofit.o
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/autofit -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/autofit/autofit.c -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/autofit.o >/dev/null 2>&1
+./builds/unix/libtool --mode=compile gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/pshinter -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include  -c -Wall -g -O2 -fvisibility=hidden -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT2_BUILD_LIBRARY -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/pshinter.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/pshinter/pshinter.c
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/pshinter -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/pshinter/pshinter.c  -fPIC -DPIC -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/pshinter.o
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/pshinter -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/pshinter/pshinter.c -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/pshinter.o >/dev/null 2>&1
+./builds/unix/libtool --mode=compile gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/raster -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include  -c -Wall -g -O2 -fvisibility=hidden -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT2_BUILD_LIBRARY -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/raster.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/raster/raster.c
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/raster -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/raster/raster.c  -fPIC -DPIC -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/raster.o
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/raster -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/raster/raster.c -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/raster.o >/dev/null 2>&1
+./builds/unix/libtool --mode=compile gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/smooth -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include  -c -Wall -g -O2 -fvisibility=hidden -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT2_BUILD_LIBRARY -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/smooth.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/smooth/smooth.c
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/smooth -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/smooth/smooth.c  -fPIC -DPIC -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/smooth.o
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/smooth -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/smooth/smooth.c -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/smooth.o >/dev/null 2>&1
+./builds/unix/libtool --mode=compile gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/cache -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include  -c -Wall -g -O2 -fvisibility=hidden -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT2_BUILD_LIBRARY -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftcache.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/cache/ftcache.c
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/cache -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/cache/ftcache.c  -fPIC -DPIC -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/ftcache.o
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/cache -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/cache/ftcache.c -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftcache.o >/dev/null 2>&1
+./builds/unix/libtool --mode=compile gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include  -c -Wall -g -O2 -fvisibility=hidden -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT2_BUILD_LIBRARY -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftgzip.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/gzip/ftgzip.c
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/gzip/ftgzip.c  -fPIC -DPIC -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/ftgzip.o
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/gzip/ftgzip.c -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftgzip.o >/dev/null 2>&1
+./builds/unix/libtool --mode=compile gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/lzw -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include  -c -Wall -g -O2 -fvisibility=hidden -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT2_BUILD_LIBRARY -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftlzw.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/lzw/ftlzw.c
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/lzw -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/lzw/ftlzw.c  -fPIC -DPIC -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/ftlzw.o
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/lzw -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/lzw/ftlzw.c -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftlzw.o >/dev/null 2>&1
+./builds/unix/libtool --mode=compile gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include  -c -Wall -g -O2 -fvisibility=hidden -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT2_BUILD_LIBRARY -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftbzip2.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/bzip2/ftbzip2.c
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/bzip2/ftbzip2.c  -fPIC -DPIC -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/ftbzip2.o
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/bzip2/ftbzip2.c -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftbzip2.o >/dev/null 2>&1
+./builds/unix/libtool --mode=compile gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/psaux -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include  -c -Wall -g -O2 -fvisibility=hidden -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT2_BUILD_LIBRARY -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/psaux.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/psaux/psaux.c
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/psaux -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/psaux/psaux.c  -fPIC -DPIC -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/psaux.o
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/psaux -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/psaux/psaux.c -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/psaux.o >/dev/null 2>&1
+./builds/unix/libtool --mode=compile gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/psnames -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include  -c -Wall -g -O2 -fvisibility=hidden -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT2_BUILD_LIBRARY -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/psnames.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/psnames/psnames.c
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/psnames -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/psnames/psnames.c  -fPIC -DPIC -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/psnames.o
+libtool: compile:  gcc -pedantic -ansi -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/psnames -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs -I./builds/unix -I/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include -c -Wall -g -O2 -fvisibility=hidden "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" -DFT2_BUILD_LIBRARY "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/src/psnames/psnames.c -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/psnames.o >/dev/null 2>&1
+./builds/unix/libtool --mode=link gcc -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/libfreetype.la  /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftsystem.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftdebug.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftinit.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftbase.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftbbox.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftbdf.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftbitmap.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftcid.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftfstype.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftgasp.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftglyph.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftgxval.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftmm.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftotval.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftpatent.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftpfr.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftstroke.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftsynth.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/fttype1.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftwinfnt.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/truetype.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/type1.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/cff.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/type1cid.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/pfr.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/type42.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/winfnt.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/pcf.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/bdf.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/sfnt.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/autofit.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/pshinter.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/raster.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/smooth.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftcache.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftgzip.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftlzw.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftbzip2.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/psaux.lo /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/psnames.lo -rpath /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/../../freetype/lib -version-info 22:1:16  -no-undefined -export-symbols /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftexport.sym
+libtool: link: rm -fr  /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/libfreetype.a /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/libfreetype.la /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/libfreetype.lai /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/libfreetype.so /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/libfreetype.so.6 /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/libfreetype.so.6.16.1 /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/libfreetype.ver
+libtool: link: echo "{ global:" > /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/libfreetype.ver
+libtool: link:  cat /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftexport.sym | sed -e "s/\(.*\)/\1;/" >> /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/libfreetype.ver
+libtool: link:  echo "local: *; };" >> /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/libfreetype.ver
+libtool: link:  gcc -shared  -fPIC -DPIC  /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/ftsystem.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/ftdebug.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/ftinit.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/ftbase.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/ftbbox.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/ftbdf.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/ftbitmap.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/ftcid.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/ftfstype.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/ftgasp.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/ftglyph.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/ftgxval.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/ftmm.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/ftotval.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/ftpatent.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/ftpfr.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/ftstroke.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/ftsynth.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/fttype1.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/ftwinfnt.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/truetype.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/type1.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/cff.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/type1cid.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/pfr.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/type42.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/winfnt.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/pcf.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/bdf.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/sfnt.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/autofit.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/pshinter.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/raster.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/smooth.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/ftcache.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/ftgzip.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/ftlzw.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/ftbzip2.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/psaux.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/psnames.o      -Wl,-soname -Wl,libfreetype.so.6 -Wl,-version-script -Wl,/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/libfreetype.ver -o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/libfreetype.so.6.16.1
+libtool: link: (cd "/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs" && rm -f "libfreetype.so.6" && ln -s "libfreetype.so.6.16.1" "libfreetype.so.6")
+libtool: link: (cd "/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs" && rm -f "libfreetype.so" && ln -s "libfreetype.so.6.16.1" "libfreetype.so")
+libtool: link: ar cru /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/libfreetype.a  /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftsystem.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftdebug.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftinit.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftbase.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftbbox.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftbdf.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftbitmap.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftcid.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftfstype.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftgasp.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftglyph.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftgxval.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftmm.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftotval.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftpatent.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftpfr.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftstroke.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftsynth.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/fttype1.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftwinfnt.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/truetype.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/type1.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/cff.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/type1cid.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/pfr.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/type42.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/winfnt.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/pcf.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/bdf.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/sfnt.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/autofit.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/pshinter.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/raster.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/smooth.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftcache.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftgzip.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftlzw.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftbzip2.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/psaux.o /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/psnames.o
+libtool: link: ranlib /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/libfreetype.a
+libtool: link: ( cd "/usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs" && rm -f "libfreetype.la" && ln -s "../libfreetype.la" "libfreetype.la" )
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/lib/src/freetype-2.9.1'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/lib/src/freetype-2.9.1'
+rm -rf /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/../../freetype/include/freetype2
+rm -f /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/../../freetype/include/ft2build.h
+/usr/bin/mkdir -p /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/../../freetype/lib                               \
+                         /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/../../freetype/lib/pkgconfig                     \
+                         /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/../../freetype/include/freetype2/freetype/config \
+                         /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/../../freetype/share/aclocal
+./builds/unix/libtool --mode=install /usr/bin/install -c                             \
+                                  /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/libfreetype.la /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/../../freetype/lib
+libtool: install: /usr/bin/install -c /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/libfreetype.so.6.16.1 /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/../../freetype/lib/libfreetype.so.6.16.1
+libtool: install: (cd /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/../../freetype/lib && { ln -s -f libfreetype.so.6.16.1 libfreetype.so.6 || { rm -f libfreetype.so.6 && ln -s libfreetype.so.6.16.1 libfreetype.so.6; }; })
+libtool: install: (cd /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/../../freetype/lib && { ln -s -f libfreetype.so.6.16.1 libfreetype.so || { rm -f libfreetype.so && ln -s libfreetype.so.6.16.1 libfreetype.so; }; })
+libtool: install: /usr/bin/install -c /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/libfreetype.lai /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/../../freetype/lib/libfreetype.la
+libtool: install: /usr/bin/install -c /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/.libs/libfreetype.a /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/../../freetype/lib/libfreetype.a
+libtool: install: chmod 644 /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/../../freetype/lib/libfreetype.a
+libtool: install: ranlib /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/../../freetype/lib/libfreetype.a
+libtool: finish: PATH="/usr/tce/packages/texlive/texlive-20220321/bin/x86_64-linux:/usr/tce/packages/texlive/texlive-20220321/bin:/usr/global/tools/flux_wrappers/bin:/usr/tce/packages/mvapich2/mvapich2-2.3.7-intel-classic-2021.6.0-magic/bin:/usr/tce/packages/intel-classic/intel-classic-2021.6.0-magic/bin:/usr/tce/bin:/usr/lib64/ccache:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:.:/sbin" ldconfig -n /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/../../freetype/lib
+----------------------------------------------------------------------
+Libraries have been installed in:
+   /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/../../freetype/lib
+
+If you ever happen to want to link against installed libraries
+in a given directory, LIBDIR, you must either use libtool, and
+specify the full pathname of the library, or use the '-LLIBDIR'
+flag during linking and do at least one of the following:
+   - add LIBDIR to the 'LD_LIBRARY_PATH' environment variable
+     during execution
+   - add LIBDIR to the 'LD_RUN_PATH' environment variable
+     during linking
+   - use the '-Wl,-rpath -Wl,LIBDIR' linker flag
+   - have your system administrator add LIBDIR to '/etc/ld.so.conf'
+
+See any operating system documentation about shared libraries for
+more information, such as the ld(1) and ld.so(8) manual pages.
+----------------------------------------------------------------------
+for P in /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include/freetype/tttables.h /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include/freetype/ftcid.h /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include/freetype/ftstroke.h /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include/freetype/t1tables.h /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include/freetype/fterrors.h /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include/freetype/ftparams.h /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include/freetype/ftglyph.h /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include/freetype/ftbitmap.h /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include/freetype/ftmodapi.h /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include/freetype/ftsystem.h /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include/freetype/ftfntfmt.h /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include/freetype/ftsynth.h /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include/freetype/ftlcdfil.h /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include/freetype/ftpfr.h /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include/freetype/ftsizes.h /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include/freetype/ftrender.h /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include/freetype/ftlzw.h /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include/freetype/ftoutln.h /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include/freetype/ftbzip2.h /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include/freetype/ftlist.h /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include/freetype/ftincrem.h /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include/freetype/ftchapters.h /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include/freetype/ftbdf.h /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include/freetype/ftcache.h /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include/freetype/ftgxval.h /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include/freetype/ftgzip.h /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include/freetype/ftwinfnt.h /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include/freetype/ftdriver.h /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include/freetype/ftmac.h /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include/freetype/freetype.h /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include/freetype/fttypes.h /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include/freetype/ftotval.h /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include/freetype/ftbbox.h /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include/freetype/ftmm.h /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include/freetype/ftadvanc.h /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include/freetype/ftmoderr.h /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include/freetype/ftgasp.h /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include/freetype/ftsnames.h /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include/freetype/tttags.h /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include/freetype/fterrdef.h /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include/freetype/fttrigon.h /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include/freetype/ftimage.h /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include/freetype/ttnameid.h ; do                           \
+          /usr/bin/install -c -m 644                                    \
+            $P /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/../../freetype/include/freetype2/freetype ; \
+        done
+for P in /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include/freetype/config/ftstdlib.h /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include/freetype/config/ftconfig.h /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include/freetype/config/ftmodule.h /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include/freetype/config/ftoption.h /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include/freetype/config/ftheader.h  /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftmodule.h ./builds/unix/ftoption.h ; do                                  \
+          /usr/bin/install -c -m 644                                           \
+            $P /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/../../freetype/include/freetype2/freetype/config ; \
+        done
+/usr/bin/install -c -m 644 /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/include/ft2build.h                  \
+          /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/../../freetype/include/freetype2/ft2build.h
+/usr/bin/install -c -m 644 ./builds/unix/ftconfig.h                        \
+          /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/../../freetype/include/freetype2/freetype/config/ftconfig.h
+/usr/bin/install -c -m 644 /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/objs/ftmodule.h                          \
+          /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/../../freetype/include/freetype2/freetype/config/ftmodule.h
+/usr/bin/install -c -m 644 ./builds/unix/ftoption.h                        \
+          /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/../../freetype/include/freetype2/freetype/config/ftoption.h
+/usr/bin/install -c -m 644 ./builds/unix/freetype2.m4             \
+          /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/../../freetype/share/aclocal/freetype2.m4
+/usr/bin/install -c -m 644 ./builds/unix/freetype2.pc             \
+          /usr/workspace/iopp/kogiou1/Montage/lib/src/freetype-2.9.1/../../freetype/lib/pkgconfig/freetype2.pc
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/lib/src/freetype-2.9.1'
+(cd .. && ranlib *.a)
+chmod 644 ../include/*.h
+make[1]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/lib/src'
+test ! -d Montage    || (cd Montage    && make && make install)
+make[1]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/Montage'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/Montage'
+make[1]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/Montage'
+cp mConvert mFlattenExec mHdrCheck mHdrtbl mTblSort mTileHdr mTileImage ../bin
+make[1]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/Montage'
+test ! -d util       || (cd util       && make)
+make[1]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/util'
+(cd Calibrate    && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/util/Calibrate'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/util/Calibrate'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/util/Calibrate'
+cp mCalibrate mCalExec ../../bin
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/util/Calibrate'
+(cd CatMap       && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/util/CatMap'
+make[2]: 'mCatMap' is up to date.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/util/CatMap'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/util/CatMap'
+cp mCatMap ../../bin
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/util/CatMap'
+(cd CatSearch    && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/util/CatSearch'
+make[2]: 'mCatSearch' is up to date.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/util/CatSearch'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/util/CatSearch'
+cp mCatSearch ../../bin
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/util/CatSearch'
+(cd Exec         && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/util/Exec'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/util/Exec'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/util/Exec'
+cp mExec ../../bin
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/util/Exec'
+(cd MovingTarget && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/util/MovingTarget'
+make[2]: 'mMovingTarget' is up to date.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/util/MovingTarget'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/util/MovingTarget'
+cp mMovingTarget ../../bin
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/util/MovingTarget'
+(cd Pad          && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/util/Pad'
+make[2]: 'mPad' is up to date.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/util/Pad'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/util/Pad'
+cp mPad ../../bin
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/util/Pad'
+(cd Pix2Coord    && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/util/Pix2Coord'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/util/Pix2Coord'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/util/Pix2Coord'
+cp mPix2Coord mFixHdr ../../bin
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/util/Pix2Coord'
+(cd Rotate       && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/util/Rotate'
+make[2]: 'mRotate' is up to date.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/util/Rotate'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/util/Rotate'
+cp mRotate ../../bin
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/util/Rotate'
+(cd Search       && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/util/Search'
+make[2]: 'mSearch' is up to date.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/util/Search'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/util/Search'
+cp mSearch ../../bin
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/util/Search'
+(cd ShrinkHdr    && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/util/ShrinkHdr'
+make[2]: 'mShrinkHdr' is up to date.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/util/ShrinkHdr'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/util/ShrinkHdr'
+cp mShrinkHdr ../../bin
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/util/ShrinkHdr'
+(cd TblExec      && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/util/TblExec'
+make[2]: 'mTblExec' is up to date.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/util/TblExec'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/util/TblExec'
+cp mTblExec ../../bin
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/util/TblExec'
+make[1]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/util'
+test ! -d grid       || (cd grid       && make)
+make[1]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/grid'
+(cd Pegasus         && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/grid/Pegasus'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/grid/Pegasus'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/grid/Pegasus'
+cp mConcatFit mDAG mDAGFiles mDAGGalacticPlane mDAGTbls \
+	mDiffFit mGridExec mNotify mPresentation ../../bin
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/grid/Pegasus'
+(cd Globus/ExecTG   && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/grid/Globus/ExecTG'
+make[2]: 'mExecTG' is up to date.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/grid/Globus/ExecTG'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/grid/Globus/ExecTG'
+cp mExecTG ../../../bin
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/grid/Globus/ExecTG'
+(cd Globus/NotifyTG && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/grid/Globus/NotifyTG'
+make[2]: 'mNotifyTG' is up to date.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/grid/Globus/NotifyTG'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/grid/Globus/NotifyTG'
+cp mNotifyTG ../../../bin
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/grid/Globus/NotifyTG'
+make[1]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/grid'
+test ! -d MontageLib || (cd MontageLib && make)
+make[1]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib'
+(cd util          && make)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/util'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/util'
+(cd Add           && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Add'
+make[2]: 'mAdd' is up to date.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Add'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Add'
+cp mAdd ../../bin
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Add'
+(cd AddCube       && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/AddCube'
+make[2]: 'mAddCube' is up to date.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/AddCube'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/AddCube'
+cp mAddCube ../../bin
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/AddCube'
+(cd  AddMem       && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/AddMem'
+make[2]: 'mAddMem' is up to date.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/AddMem'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/AddMem'
+cp mAddMem ../../bin
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/AddMem'
+(cd Background    && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Background'
+make[2]: 'mBackground' is up to date.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Background'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Background'
+cp mBackground ../../bin
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Background'
+(cd BestImage     && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/BestImage'
+make[2]: 'mBestImage' is up to date.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/BestImage'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/BestImage'
+cp mBestImage ../../bin
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/BestImage'
+(cd BgModel       && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/BgModel'
+make[2]: 'mBgModel' is up to date.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/BgModel'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/BgModel'
+cp mBgModel ../../bin
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/BgModel'
+(cd CoverageCheck && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/CoverageCheck'
+make[2]: 'mCoverageCheck' is up to date.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/CoverageCheck'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/CoverageCheck'
+cp mCoverageCheck ../../bin
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/CoverageCheck'
+(cd Diff          && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Diff'
+make[2]: 'mDiff' is up to date.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Diff'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Diff'
+cp mDiff ../../bin
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Diff'
+(cd Examine       && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Examine'
+make[2]: 'mExamine' is up to date.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Examine'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Examine'
+cp mExamine ../../bin
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Examine'
+(cd Fitplane      && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Fitplane'
+make[2]: 'mFitplane' is up to date.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Fitplane'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Fitplane'
+cp mFitplane ../../bin
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Fitplane'
+(cd DiffFit       && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/DiffFit'
+make[2]: 'mDiffFit' is up to date.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/DiffFit'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/DiffFit'
+cp mDiffFit ../../bin
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/DiffFit'
+(cd FixNaN        && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/FixNaN'
+make[2]: 'mFixNaN' is up to date.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/FixNaN'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/FixNaN'
+cp mFixNaN ../../bin
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/FixNaN'
+(cd Flatten       && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Flatten'
+make[2]: 'mFlatten' is up to date.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Flatten'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Flatten'
+cp mFlatten ../../bin
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Flatten'
+(cd GetHdr        && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/GetHdr'
+make[2]: 'mGetHdr' is up to date.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/GetHdr'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/GetHdr'
+cp mGetHdr ../../bin
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/GetHdr'
+(cd Hdr           && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Hdr'
+make[2]: 'mHdr' is up to date.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Hdr'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Hdr'
+cp mHdr ../../bin
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Hdr'
+(cd Histogram     && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Histogram'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Histogram'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Histogram'
+cp mHistogram mCombineHist ../../bin
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Histogram'
+(cd Imgtbl        && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Imgtbl'
+make[2]: 'mImgtbl' is up to date.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Imgtbl'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Imgtbl'
+cp mImgtbl ../../bin
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Imgtbl'
+(cd ArchiveList   && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/ArchiveList'
+make[2]: 'mArchiveList' is up to date.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/ArchiveList'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/ArchiveList'
+cp mArchiveList ../../bin
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/ArchiveList'
+(cd ArchiveGet    && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/ArchiveGet'
+make[2]: 'mArchiveGet' is up to date.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/ArchiveGet'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/ArchiveGet'
+cp mArchiveGet ../../bin
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/ArchiveGet'
+(cd ArchiveExec   && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/ArchiveExec'
+make[2]: 'mArchiveExec' is up to date.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/ArchiveExec'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/ArchiveExec'
+cp mArchiveExec ../../bin
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/ArchiveExec'
+(cd MakeHdr       && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/MakeHdr'
+make[2]: 'mMakeHdr' is up to date.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/MakeHdr'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/MakeHdr'
+cp mMakeHdr ../../bin
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/MakeHdr'
+(cd MakeImg       && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/MakeImg'
+make[2]: 'mMakeImg' is up to date.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/MakeImg'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/MakeImg'
+cp mMakeImg ../../bin
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/MakeImg'
+(cd Mask          && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Mask'
+make[2]: 'mMask' is up to date.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Mask'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Mask'
+cp mMask ../../bin
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Mask'
+(cd Overlaps      && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Overlaps'
+make[2]: 'mOverlaps' is up to date.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Overlaps'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Overlaps'
+cp mOverlaps ../../bin
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Overlaps'
+(cd Project       && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Project'
+make[2]: 'mProject' is up to date.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Project'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Project'
+cp mProject ../../bin
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Project'
+(cd ProjectCube   && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/ProjectCube'
+make[2]: 'mProjectCube' is up to date.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/ProjectCube'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/ProjectCube'
+cp mProjectCube ../../bin
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/ProjectCube'
+(cd ProjectPP     && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/ProjectPP'
+make[2]: 'mProjectPP' is up to date.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/ProjectPP'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/ProjectPP'
+cp mProjectPP ../../bin
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/ProjectPP'
+(cd ProjectQL     && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/ProjectQL'
+make[2]: 'mProjectQL' is up to date.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/ProjectQL'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/ProjectQL'
+cp mProjectQL ../../bin
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/ProjectQL'
+(cd PutHdr        && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/PutHdr'
+make[2]: 'mPutHdr' is up to date.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/PutHdr'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/PutHdr'
+cp mPutHdr ../../bin
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/PutHdr'
+(cd ShrinkCube    && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/ShrinkCube'
+make[2]: 'mShrinkCube' is up to date.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/ShrinkCube'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/ShrinkCube'
+cp mShrinkCube ../../bin
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/ShrinkCube'
+(cd Shrink        && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Shrink'
+make[2]: 'mShrink' is up to date.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Shrink'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Shrink'
+cp mShrink ../../bin
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Shrink'
+(cd SubCube       && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/SubCube'
+make[2]: 'mSubCube' is up to date.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/SubCube'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/SubCube'
+cp mSubCube ../../bin
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/SubCube'
+(cd SubHdr        && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/SubHdr'
+make[2]: 'mSubHdr' is up to date.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/SubHdr'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/SubHdr'
+cp mSubHdr ../../bin
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/SubHdr'
+(cd Subimage      && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Subimage'
+make[2]: 'mSubimage' is up to date.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Subimage'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Subimage'
+cp mSubimage ../../bin
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Subimage'
+(cd Subset        && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Subset'
+make[2]: 'mSubset' is up to date.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Subset'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Subset'
+cp mSubset ../../bin
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Subset'
+(cd TANHdr        && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/TANHdr'
+make[2]: 'mTANHdr' is up to date.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/TANHdr'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/TANHdr'
+cp mTANHdr ../../bin
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/TANHdr'
+(cd TileImage     && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/TileImage'
+make[2]: 'mTileImage' is up to date.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/TileImage'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/TileImage'
+cp mTileImage ../../bin
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/TileImage'
+(cd Transpose     && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Transpose'
+make[2]: 'mTranspose' is up to date.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Transpose'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Transpose'
+cp mTranspose ../../bin
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Transpose'
+(cd WWT           && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/WWT'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/WWT'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/WWT'
+cp mHdrWWT mHdrWWTExec mProjWWTExec mPNGWWTExec ../../bin
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/WWT'
+(cd Viewer        && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Viewer'
+make[2]: 'mViewer' is up to date.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Viewer'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Viewer'
+cp mViewer ../../bin
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/Viewer'
+(cd DiffExec      && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/DiffExec'
+make[2]: 'mDiffExec' is up to date.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/DiffExec'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/DiffExec'
+cp mDiffExec ../../bin
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/DiffExec'
+(cd BgExec        && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/BgExec'
+make[2]: 'mBgExec' is up to date.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/BgExec'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/BgExec'
+cp mBgExec ../../bin
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/BgExec'
+(cd DiffFitExec   && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/DiffFitExec'
+make[2]: 'mDiffFitExec' is up to date.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/DiffFitExec'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/DiffFitExec'
+cp mDiffFitExec ../../bin
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/DiffFitExec'
+(cd FitExec       && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/FitExec'
+make[2]: 'mFitExec' is up to date.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/FitExec'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/FitExec'
+cp mFitExec ../../bin
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/FitExec'
+(cd ProjExec      && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/ProjExec'
+make[2]: 'mProjExec' is up to date.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/ProjExec'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/ProjExec'
+cp mProjExec ../../bin
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib/ProjExec'
+rm -f libmontage.a libmontage.so libmontagepy.so
+ar q  libmontage.a \
+		util/checkFile.o util/checkHdr.o util/checkWCS.o \
+		util/debugCheck.o util/filePath.o \
+		Add/montageAdd.o \
+		AddCube/montageAddCube.o \
+		AddMem/montageAddMem.o \
+		ArchiveList/montageArchiveList.o \
+		ArchiveGet/montageArchiveGet.o \
+		ArchiveExec/montageArchiveExec.o \
+		Background/montageBackground.o \
+		BestImage/montageBestImage.o \
+		BgModel/montageBgModel.o \
+		CoverageCheck/montageCoverageCheck.o \
+		DiffFit/montageDiffFit.o \
+		Diff/montageDiff.o \
+		Examine/montageExamine.o \
+		Fitplane/montageFitplane.o \
+		FixNaN/montageFixNaN.o \
+		Flatten/montageFlatten.o \
+		GetHdr/montageGetHdr.o \
+		Hdr/montageHdr.o \
+		Histogram/montageHistogram.o \
+		Imgtbl/montageImgtbl.o \
+		MakeHdr/montageMakeHdr.o \
+		MakeImg/montageMakeImg.o \
+		Mask/montageMask.o \
+		Overlaps/montageOverlaps.o \
+		ProjectCube/montageProjectCube.o \
+		Project/montageProject.o \
+		ProjectPP/montageProjectPP.o \
+		ProjectQL/montageProjectQL.o \
+		PutHdr/montagePutHdr.o \
+		ShrinkCube/montageShrinkCube.o \
+		Shrink/montageShrink.o \
+		SubCube/montageSubCube.o \
+		SubHdr/montageSubHdr.o \
+		Subimage/montageSubimage.o \
+		Subset/montageSubset.o \
+		TANHdr/montageTANHdr.o \
+		TileImage/montageTileImage.o \
+		Transpose/montageTranspose.o \
+		Viewer/montageViewer.o \
+		Viewer/mViewer_graphics.o \
+		Viewer/mViewer_grid.o \
+		Viewer/mViewer_boundingbox.o \
+		BgExec/montageBgExec.o \
+		DiffExec/montageDiffExec.o \
+		FitExec/montageFitExec.o \
+		DiffFitExec/montageDiffFitExec.o \
+		ProjExec/montageProjExec.o 
+gcc -shared  -o libmontage.so \
+		util/checkFile.o util/checkHdr.o util/checkWCS.o \
+		util/debugCheck.o util/filePath.o \
+		Add/montageAdd.o \
+		AddCube/montageAddCube.o \
+		AddMem/montageAddMem.o \
+		ArchiveList/montageArchiveList.o \
+		ArchiveGet/montageArchiveGet.o \
+		ArchiveExec/montageArchiveExec.o \
+		Background/montageBackground.o \
+		BestImage/montageBestImage.o \
+		BgModel/montageBgModel.o \
+		CoverageCheck/montageCoverageCheck.o \
+		DiffFit/montageDiffFit.o \
+		Diff/montageDiff.o \
+		Examine/montageExamine.o \
+		Fitplane/montageFitplane.o \
+		FixNaN/montageFixNaN.o \
+		Flatten/montageFlatten.o \
+		GetHdr/montageGetHdr.o \
+		Hdr/montageHdr.o \
+		Histogram/montageHistogram.o \
+		Imgtbl/montageImgtbl.o \
+		MakeHdr/montageMakeHdr.o \
+		MakeImg/montageMakeImg.o \
+		Mask/montageMask.o \
+		Overlaps/montageOverlaps.o \
+		ProjectCube/montageProjectCube.o \
+		Project/montageProject.o \
+		ProjectPP/montageProjectPP.o \
+		ProjectQL/montageProjectQL.o \
+		PutHdr/montagePutHdr.o \
+		ShrinkCube/montageShrinkCube.o \
+		Shrink/montageShrink.o \
+		SubCube/montageSubCube.o \
+		SubHdr/montageSubHdr.o \
+		Subimage/montageSubimage.o \
+		Subset/montageSubset.o \
+		TANHdr/montageTANHdr.o \
+		TileImage/montageTileImage.o \
+		Transpose/montageTranspose.o \
+		Viewer/montageViewer.o \
+		Viewer/mViewer_graphics.o \
+		Viewer/mViewer_grid.o \
+		Viewer/mViewer_boundingbox.o \
+		BgExec/montageBgExec.o \
+		DiffExec/montageDiffExec.o \
+		FitExec/montageFitExec.o \
+		DiffFitExec/montageDiffFitExec.o \
+		ProjExec/montageProjExec.o 
+rm -f ../python/MontagePy/lib/*.o
+mkdir -p ../python/MontagePy/lib
+cp util/checkFile.o util/checkHdr.o util/checkWCS.o \
+		util/debugCheck.o util/filePath.o \
+		Add/montageAdd.o \
+		AddCube/montageAddCube.o \
+		AddMem/montageAddMem.o \
+		ArchiveList/montageArchiveList.o \
+		ArchiveGet/montageArchiveGet.o \
+		ArchiveExec/montageArchiveExec.o \
+		Background/montageBackground.o \
+		BestImage/montageBestImage.o \
+		BgModel/montageBgModel.o \
+		CoverageCheck/montageCoverageCheck.o \
+		DiffFit/montageDiffFit.o \
+		Diff/montageDiff.o \
+		Examine/montageExamine.o \
+		Fitplane/montageFitplane.o \
+		FixNaN/montageFixNaN.o \
+		Flatten/montageFlatten.o \
+		GetHdr/montageGetHdr.o \
+		Hdr/montageHdr.o \
+		Histogram/montageHistogram.o \
+		Imgtbl/montageImgtbl.o \
+		MakeHdr/montageMakeHdr.o \
+		MakeImg/montageMakeImg.o \
+		Mask/montageMask.o \
+		Overlaps/montageOverlaps.o \
+		ProjectCube/montageProjectCube.o \
+		Project/montageProject.o \
+		ProjectPP/montageProjectPP.o \
+		ProjectQL/montageProjectQL.o \
+		PutHdr/montagePutHdr.o \
+		ShrinkCube/montageShrinkCube.o \
+		Shrink/montageShrink.o \
+		SubCube/montageSubCube.o \
+		SubHdr/montageSubHdr.o \
+		Subimage/montageSubimage.o \
+		Subset/montageSubset.o \
+		TANHdr/montageTANHdr.o \
+		TileImage/montageTileImage.o \
+		Transpose/montageTranspose.o \
+		Viewer/montageViewer.o \
+		Viewer/mViewer_graphics.o \
+		Viewer/mViewer_grid.o \
+		Viewer/mViewer_boundingbox.o \
+		BgExec/montageBgExec.o \
+		DiffExec/montageDiffExec.o \
+		FitExec/montageFitExec.o \
+		DiffFitExec/montageDiffFitExec.o \
+		ProjExec/montageProjExec.o \
+	../python/MontagePy/lib
+# The last two are special; the .libs subdirectory contain versions of the
+# .o files compiled with -fPIC.
+find ../lib/src/bzip2-1.0.6                -name \*.o -exec cp {} ../python/MontagePy/lib \;
+find ../lib/src/cfitsio-3.49               -name \*.o -exec cp {} ../python/MontagePy/lib \;
+find ../lib/src/cmd                        -name \*.o -exec cp {} ../python/MontagePy/lib \;
+find ../lib/src/coord                      -name \*.o -exec cp {} ../python/MontagePy/lib \;
+find ../lib/src/mtbl                       -name \*.o -exec cp {} ../python/MontagePy/lib \;
+find ../lib/src/svc                        -name \*.o -exec cp {} ../python/MontagePy/lib \;
+find ../lib/src/json                       -name \*.o -exec cp {} ../python/MontagePy/lib \;
+find ../lib/src/boundaries                 -name \*.o -exec cp {} ../python/MontagePy/lib \;
+find ../lib/src/pixbounds                  -name \*.o -exec cp {} ../python/MontagePy/lib \;
+find ../lib/src/www                        -name \*.o -exec cp {} ../python/MontagePy/lib \;
+find ../lib/src/wcssubs3.9.0_montage       -name \*.o -exec cp {} ../python/MontagePy/lib \;
+find ../lib/src/two_plane_v1.1             -name \*.o -exec cp {} ../python/MontagePy/lib \;
+find ../lib/src/lodepng_20140823           -name \*.o -exec cp {} ../python/MontagePy/lib \;
+find ../lib/src/jpeg-8b/.libs              -name \*.o -exec cp {} ../python/MontagePy/lib \;
+find ../lib/src/freetype-2.9.1/objs/.libs  -name \*.o -exec cp {} ../python/MontagePy/lib \;
+rm ../python/MontagePy/lib/bzip2recover.o
+rm ../python/MontagePy/lib/bzip2.o
+cp ../lib/src/two_plane_v1.1/distort.o       ../python/MontagePy/lib/two_plane_distort.o
+cp ../lib/src/wcssubs3.9.0_montage/distort.o ../python/MontagePy/lib/distort.o
+make[1]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/MontageLib'
+test ! -d ancillary  || (cd ancillary  && make && make install)
+make[1]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/ancillary'
+make[1]: 'HPXcvt' is up to date.
+make[1]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/ancillary'
+make[1]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/ancillary'
+cp HPXcvt ../bin
+make[1]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/ancillary'
+test ! -d HiPS       || (cd HiPS       && make)
+make[1]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/HiPS'
+(cd hdrs    && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/HiPS/hdrs'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/HiPS/hdrs'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/HiPS/hdrs'
+cp mHPXHdr mHiPSHdr ../../bin
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/HiPS/hdrs'
+(cd scripts && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/HiPS/scripts'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/HiPS/scripts'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/HiPS/scripts'
+cp mHPXMosaicScripts mHPXProjectScripts mHPXDiffScripts mHPXBgCorrectScripts mHPXCoaddScripts \
+		   mHPXShrinkScripts mHiPSTileScripts mHiPSPNGScripts mHPXQuicklookScripts mHPXBlendScripts \
+		   mHPXHistogramScripts mHPXCombineHistScripts mHPXPlatePNGScripts mHPXFlattenScripts \
+		   mHPX8BitScripts mHPXColorQuicklookScripts ../../bin
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/HiPS/scripts'
+(cd util    && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/HiPS/util'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/HiPS/util'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/HiPS/util'
+cp mHPXPlateList mHiPSSetup mHiPSID mHiPSAllSky mHPXPlateCombine \
+mHPXBgCombine mHPXBgSplit mHPXSplitCorrections mHPXRawHistogram \
+mHPXxy2tile mHPXtile2xy mHPXCombineHist mHPXMap mHPXBlendEdges \
+mHPXCoord2Tile mHPXOrder mHiPSExec ../../bin
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/HiPS/util'
+(cd pngs    && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/HiPS/pngs'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/HiPS/pngs'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/HiPS/pngs'
+cp mHPXPlateHist mHPXPlateComboHist mHPXPlatePNG mHiPSPNGs ../../bin
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/HiPS/pngs'
+(cd tiles   && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/HiPS/tiles'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/HiPS/tiles'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/HiPS/tiles'
+cp mHiPSTiles ../../bin
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/HiPS/tiles'
+(cd gap     && make && make install)
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/HiPS/gap'
+gcc -o mHPXGapScripts mHPXGapScripts.o ../../MontageLib/util/debugCheck.o -L../../lib -lpixbounds -lwcs -lmtbl -lcfitsio -lm
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/HiPS/gap'
+make[2]: Entering directory '/usr/WS2/iopp/kogiou1/Montage/HiPS/gap'
+cp mHPXGapScripts mHPXGapDiff mHPXGapCombine ../../bin
+make[2]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/HiPS/gap'
+make[1]: Leaving directory '/usr/WS2/iopp/kogiou1/Montage/HiPS'

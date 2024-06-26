@@ -16,6 +16,8 @@ Version  Developer        Date     Change
 
 #include <montage.h>
 
+#include <dlio_profiler/dlio_profiler.h>
+
 #define MAXSTR 4096
 
 int mDiffFit_debug;
@@ -74,6 +76,11 @@ struct mDiffFitReturn *mDiffFit(char *fname1, char *fname2, char *diffname, char
    struct mDiffFitReturn  *returnStruct;
    struct mDiffReturn     *diff;
    struct mFitplaneReturn *fitplane;
+
+   ///////////////////////////////////////////////////////////////////////////////
+   DLIO_PROFILER_C_FUNCTION_START();
+   DLIO_PROFILER_C_FUNCTION_UPDATE_STR("fname1", fname1);
+   DLIO_PROFILER_C_FUNCTION_UPDATE_STR("fname2", fname2);
 
    returnStruct = (struct mDiffFitReturn *)malloc(sizeof(struct mDiffFitReturn));
 
@@ -175,7 +182,6 @@ struct mDiffFitReturn *mDiffFit(char *fname1, char *fname2, char *diffname, char
       }
    }
 
-
    /* Output fit */
 
    if(boxwidth == 0.)
@@ -223,6 +229,8 @@ struct mDiffFitReturn *mDiffFit(char *fname1, char *fname2, char *diffname, char
    returnStruct->boxwidth  = boxwidth;
    returnStruct->boxheight = boxheight;
    returnStruct->boxang    = boxangle;
+
+   DLIO_PROFILER_C_FUNCTION_END();
 
    return returnStruct;
 }

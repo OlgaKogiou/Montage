@@ -3,6 +3,7 @@ CONFIG_MAKE=$(top_srcdir)/config.make
 
 -include $(top_srcdir)/config.make
 
+
 all:
 	mkdir -p bin
 	mkdir -p lib/include

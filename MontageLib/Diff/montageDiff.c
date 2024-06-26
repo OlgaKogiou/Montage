@@ -47,6 +47,8 @@ Version  Developer        Date     Change
 #include <mDiff.h>
 #include <montage.h>
 
+#include <dlio_profiler/dlio_profiler.h>
+
 #define MAXSTR  256
 #define MAXFILE 256
 
@@ -110,6 +112,9 @@ static char montage_json  [1024];
 struct mDiffReturn *mDiff(char *input_file1, char *input_file2, char *ofile, char *template_file, 
                           int noAreasin, double fact, int debugin)
 {
+   ///////////////////////////////////////////////////////////////////////////////////////////////
+   DLIO_PROFILER_C_FUNCTION_START();
+
    int       i, j, ifile, status;
    long      fpixel[4], nelements;
    int       nullcnt, haveMinMax;
@@ -211,6 +216,7 @@ struct mDiffReturn *mDiff(char *input_file1, char *input_file2, char *ofile, cha
    if(checkHdr)
    {
       strcpy(returnStruct->msg, checkHdr);
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -297,6 +303,7 @@ struct mDiffReturn *mDiff(char *input_file1, char *input_file2, char *ofile, cha
    if(mDiff_readTemplate(template_file) > 0)
    {
       strcpy(returnStruct->msg, montage_msgstr);
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -316,9 +323,11 @@ struct mDiffReturn *mDiff(char *input_file1, char *input_file2, char *ofile, cha
    /* (for memory allocation purposes)                  */
    /*****************************************************/
 
+
    if(mDiff_readFits(infile[0], inarea[0]) > 0)
    {
       strcpy(returnStruct->msg, montage_msgstr);
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -360,6 +369,7 @@ struct mDiffReturn *mDiff(char *input_file1, char *input_file2, char *ofile, cha
    {
       mDiff_printFitsError(status);
       strcpy(returnStruct->msg, montage_msgstr);
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -369,6 +379,7 @@ struct mDiffReturn *mDiff(char *input_file1, char *input_file2, char *ofile, cha
       {
          mDiff_printFitsError(status);
          strcpy(returnStruct->msg, montage_msgstr);
+         DLIO_PROFILER_C_FUNCTION_END();
          return returnStruct;
       }
    }
@@ -376,6 +387,7 @@ struct mDiffReturn *mDiff(char *input_file1, char *input_file2, char *ofile, cha
    if(mDiff_readFits(infile[1], inarea[1]) > 0)
    {
       strcpy(returnStruct->msg, montage_msgstr);
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -455,6 +467,7 @@ struct mDiffReturn *mDiff(char *input_file1, char *input_file2, char *ofile, cha
    {
       mDiff_printFitsError(status);
       strcpy(returnStruct->msg, montage_msgstr);
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -464,6 +477,7 @@ struct mDiffReturn *mDiff(char *input_file1, char *input_file2, char *ofile, cha
       {
          mDiff_printFitsError(status);
          strcpy(returnStruct->msg, montage_msgstr);
+         DLIO_PROFILER_C_FUNCTION_END();
          return returnStruct;
       }
    }
@@ -473,12 +487,15 @@ struct mDiffReturn *mDiff(char *input_file1, char *input_file2, char *ofile, cha
    /* Check for overlap */
    /*********************/
 
+
    if(ilength <= 0 || jlength <= 0)
    {
       mDiff_printError("Images don't overlap");
       strcpy(returnStruct->msg, montage_msgstr);
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
+
 
 
    /***********************************************/ 
@@ -568,6 +585,7 @@ struct mDiffReturn *mDiff(char *input_file1, char *input_file2, char *ofile, cha
    if(mDiff_readFits(infile[ifile], inarea[ifile]) > 0)
    {
       strcpy(returnStruct->msg, montage_msgstr);
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -599,6 +617,8 @@ struct mDiffReturn *mDiff(char *input_file1, char *input_file2, char *ofile, cha
    /* Loop over the input lines */
    /*****************************/
 
+
+
    for (j=jmin1; j<jmax1; ++j)
    {
       if(mDiff_debug >= 2)
@@ -629,6 +649,7 @@ struct mDiffReturn *mDiff(char *input_file1, char *input_file2, char *ofile, cha
 
          mDiff_printFitsError(status);
          strcpy(returnStruct->msg, montage_msgstr);
+         DLIO_PROFILER_C_FUNCTION_END();
          return returnStruct;
       }
       
@@ -657,6 +678,7 @@ struct mDiffReturn *mDiff(char *input_file1, char *input_file2, char *ofile, cha
 
             mDiff_printFitsError(status);
             strcpy(returnStruct->msg, montage_msgstr);
+            DLIO_PROFILER_C_FUNCTION_END();
             return returnStruct;
          }
       }
@@ -738,6 +760,7 @@ struct mDiffReturn *mDiff(char *input_file1, char *input_file2, char *ofile, cha
       }
    }
 
+
    if(fits_close_file(diff_input.fptr, &status))
    {
       free(buffer);
@@ -754,6 +777,7 @@ struct mDiffReturn *mDiff(char *input_file1, char *input_file2, char *ofile, cha
 
       mDiff_printFitsError(status);
       strcpy(returnStruct->msg, montage_msgstr);
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -790,6 +814,7 @@ struct mDiffReturn *mDiff(char *input_file1, char *input_file2, char *ofile, cha
    if(mDiff_readFits(infile[ifile], inarea[ifile]) > 0)
    {
       strcpy(returnStruct->msg, montage_msgstr);
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -811,6 +836,7 @@ struct mDiffReturn *mDiff(char *input_file1, char *input_file2, char *ofile, cha
    /*****************************/
    /* Loop over the input lines */
    /*****************************/
+
 
    for (j=jmin2; j<jmax2; ++j)
    {
@@ -842,6 +868,7 @@ struct mDiffReturn *mDiff(char *input_file1, char *input_file2, char *ofile, cha
 
          mDiff_printFitsError(status);
          strcpy(returnStruct->msg, montage_msgstr);
+         DLIO_PROFILER_C_FUNCTION_END();
          return returnStruct;
       }
       
@@ -870,6 +897,7 @@ struct mDiffReturn *mDiff(char *input_file1, char *input_file2, char *ofile, cha
 
             mDiff_printFitsError(status);
             strcpy(returnStruct->msg, montage_msgstr);
+            DLIO_PROFILER_C_FUNCTION_END();
             return returnStruct;
          }
       }
@@ -947,6 +975,7 @@ struct mDiffReturn *mDiff(char *input_file1, char *input_file2, char *ofile, cha
       }
    }
 
+
    if(fits_close_file(diff_input.fptr, &status))
    {
       free(buffer);
@@ -963,6 +992,7 @@ struct mDiffReturn *mDiff(char *input_file1, char *input_file2, char *ofile, cha
 
       mDiff_printFitsError(status);
       strcpy(returnStruct->msg, montage_msgstr);
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -984,6 +1014,7 @@ struct mDiffReturn *mDiff(char *input_file1, char *input_file2, char *ofile, cha
 
          mDiff_printFitsError(status);
          strcpy(returnStruct->msg, montage_msgstr);
+         DLIO_PROFILER_C_FUNCTION_END();
          return returnStruct;
       }
    }
@@ -1119,6 +1150,7 @@ struct mDiffReturn *mDiff(char *input_file1, char *input_file2, char *ofile, cha
    {
       mDiff_printError("All pixels are blank.");
       strcpy(returnStruct->msg, montage_msgstr);
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -1143,6 +1175,7 @@ struct mDiffReturn *mDiff(char *input_file1, char *input_file2, char *ofile, cha
 
       mDiff_printFitsError(status);           
       strcpy(returnStruct->msg, montage_msgstr);
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -1181,6 +1214,7 @@ struct mDiffReturn *mDiff(char *input_file1, char *input_file2, char *ofile, cha
 
       mDiff_printFitsError(status);          
       strcpy(returnStruct->msg, montage_msgstr);
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -1203,6 +1237,7 @@ struct mDiffReturn *mDiff(char *input_file1, char *input_file2, char *ofile, cha
 
       mDiff_printFitsError(status);          
       strcpy(returnStruct->msg, montage_msgstr);
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -1230,6 +1265,7 @@ struct mDiffReturn *mDiff(char *input_file1, char *input_file2, char *ofile, cha
 
       mDiff_printFitsError(status);           
       strcpy(returnStruct->msg, montage_msgstr);
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -1252,6 +1288,7 @@ struct mDiffReturn *mDiff(char *input_file1, char *input_file2, char *ofile, cha
 
       mDiff_printFitsError(status);           
       strcpy(returnStruct->msg, montage_msgstr);
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -1280,6 +1317,7 @@ struct mDiffReturn *mDiff(char *input_file1, char *input_file2, char *ofile, cha
 
       mDiff_printFitsError(status);           
       strcpy(returnStruct->msg, montage_msgstr);
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -1297,6 +1335,7 @@ struct mDiffReturn *mDiff(char *input_file1, char *input_file2, char *ofile, cha
 
       mDiff_printFitsError(status);           
       strcpy(returnStruct->msg, montage_msgstr);
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -1319,6 +1358,7 @@ struct mDiffReturn *mDiff(char *input_file1, char *input_file2, char *ofile, cha
 
       mDiff_printFitsError(status);           
       strcpy(returnStruct->msg, montage_msgstr);
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -1336,6 +1376,7 @@ struct mDiffReturn *mDiff(char *input_file1, char *input_file2, char *ofile, cha
 
       mDiff_printFitsError(status);           
       strcpy(returnStruct->msg, montage_msgstr);
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -1353,6 +1394,7 @@ struct mDiffReturn *mDiff(char *input_file1, char *input_file2, char *ofile, cha
 
       mDiff_printFitsError(status);           
       strcpy(returnStruct->msg, montage_msgstr);
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -1370,6 +1412,7 @@ struct mDiffReturn *mDiff(char *input_file1, char *input_file2, char *ofile, cha
 
       mDiff_printFitsError(status);           
       strcpy(returnStruct->msg, montage_msgstr);
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -1387,6 +1430,7 @@ struct mDiffReturn *mDiff(char *input_file1, char *input_file2, char *ofile, cha
 
       mDiff_printFitsError(status);           
       strcpy(returnStruct->msg, montage_msgstr);
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -1404,6 +1448,7 @@ struct mDiffReturn *mDiff(char *input_file1, char *input_file2, char *ofile, cha
 
       mDiff_printFitsError(status);           
       strcpy(returnStruct->msg, montage_msgstr);
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -1421,6 +1466,7 @@ struct mDiffReturn *mDiff(char *input_file1, char *input_file2, char *ofile, cha
 
       mDiff_printFitsError(status);           
       strcpy(returnStruct->msg, montage_msgstr);
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -1438,6 +1484,7 @@ struct mDiffReturn *mDiff(char *input_file1, char *input_file2, char *ofile, cha
 
       mDiff_printFitsError(status);           
       strcpy(returnStruct->msg, montage_msgstr);
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -1455,6 +1502,7 @@ struct mDiffReturn *mDiff(char *input_file1, char *input_file2, char *ofile, cha
 
       mDiff_printFitsError(status);           
       strcpy(returnStruct->msg, montage_msgstr);
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -1472,6 +1520,7 @@ struct mDiffReturn *mDiff(char *input_file1, char *input_file2, char *ofile, cha
 
       mDiff_printFitsError(status);           
       strcpy(returnStruct->msg, montage_msgstr);
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -1506,6 +1555,7 @@ struct mDiffReturn *mDiff(char *input_file1, char *input_file2, char *ofile, cha
 
          mDiff_printFitsError(status);
          strcpy(returnStruct->msg, montage_msgstr);
+         DLIO_PROFILER_C_FUNCTION_END();
          return returnStruct;
       }
 
@@ -1543,6 +1593,7 @@ struct mDiffReturn *mDiff(char *input_file1, char *input_file2, char *ofile, cha
 
          mDiff_printFitsError(status);
          strcpy(returnStruct->msg, montage_msgstr);
+         DLIO_PROFILER_C_FUNCTION_END();
          return returnStruct;
       }
 
@@ -1573,6 +1624,7 @@ struct mDiffReturn *mDiff(char *input_file1, char *input_file2, char *ofile, cha
 
       mDiff_printFitsError(status);           
       strcpy(returnStruct->msg, montage_msgstr);
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -1595,6 +1647,7 @@ struct mDiffReturn *mDiff(char *input_file1, char *input_file2, char *ofile, cha
 
       mDiff_printFitsError(status);           
       strcpy(returnStruct->msg, montage_msgstr);
+      DLIO_PROFILER_C_FUNCTION_END();
       return returnStruct;
    }
 
@@ -1631,7 +1684,7 @@ struct mDiffReturn *mDiff(char *input_file1, char *input_file2, char *ofile, cha
    returnStruct->max_pixel = max_pixel;
    returnStruct->min_diff  = min_diff;
    returnStruct->max_diff  = max_diff;
-
+   DLIO_PROFILER_C_FUNCTION_END();
    return returnStruct;
 }
 
